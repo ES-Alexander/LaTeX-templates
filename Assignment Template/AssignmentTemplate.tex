@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+
+% Specify left header (e.g. course code)
+\newcommand{\leftHeader}{Left Header}
+% Define right header (e.g. Name - Assignment 1)
+\newcommand{\rightHeader}{Right Header}
+
+\input{./AssignmentSetup.tex} % Insert the setup file
+
+%% FIGURES
+% Normal figure:
+% \fig{scale 1=100%}{filename}{caption \label{labelname}}  (label optional)
+
+% Figure with frame:
+% \framefig{scale}{file}{caption \label{labelname}}
+
+% Insert sub-figures (within a \begin{figure}[H]  \end{figure} pair)
+%\subfig{alignment}{fig-width}{img-scale/height/width}{filename}{caption}
+% alignment = t(top) / b(bottom)
+% width e.g. = 0.5\textwidth
+% scale e.g. = scale=0.5 / height=5cm / width=3in
+% filename e.g. = image / image.jpg / etc
+% caption e.g. = Descriptive subfigure caption
+
+\graphicspath{{./images/}} % Images stored in "images" folder, relative to document
+
+%% COMMENTS
+% Insert multi-line comments with \comment{<text>}
+% Insert displayed multi-line comments using \dcom{<text>}
+
+%% QUESTIONS
+% Question syntax:
+% % QN
+% \que {Question summary/details}
+%     Question response.
+
+%% REFERENCING
+% Reference figures (\figref{label})
+% Reference subfigures (\sfigref{label})
+% Reference tables (\tabref{label})
+% Reference sections (\secref{label})
+
+%% MATHS NOTATIONS
+% Align (multiline) maths environment:
+%		\begin{align}  --> \end{align}
+%		use \\ for newline, & for alignment character
+
+% Inline maths environment:
+% 		$ --> $
+
+% Insert units with \unit{<unit>} (e.g. \unit{m}^3)
+% Units without a space before are \nsunit{<unit>}
+
+% Insert *10^n with \E{n} (e.g. \E{-5})
+% To use inline in normal text mode, use \tE{n}
+
+% Command for math formatted differentials (\D x)
+
+% Command for short bolded vector notation (\ve{x})
+
+% Commands for left/right surrounding braces
+%		\lr{thing} % -> \left( thing \right), 
+%		\lrs{thing} %-> \left[ thing \right],
+%		\lra{thing} %-> \left | thing \right |
+
+% Commands for integrals
+% 		\eint{integrand}{wrt var}
+%		\eiint{integrand}{wrt var inner}{wrt var outer}
+%		\dint{lower limit}{upper limit}{integrand}{wrt var}
+%		\diint{outer_low}{out_high}{inner_low}{in_high}{integrand}{in_var}{out_var}
+
+% Command for partial derivatives (\del{y}{t})
+
+% Command for full derivatives, nth order (\der[2]{y}{t} or \der{y}{x})
+% 		'order' is optional, hence square brackets
+
+% Command for trigonometric functions, nth power  
+% 		(e.g. \cos[2]{x} or \sin{4} or \tan[-1]{y})
+%		'power' is optional
+
+% Command for logarithms, base n (e.g. \log[2]{x} or \log{y})
+%		'base' is optional
+
+% Command for quadratic formula (\qf{a}{b}{c})
+
+% Command for 2x2 eigenvalues working (\evals{X}{x11}{x21}{x12}{x22})
+
+% Command for 2x2 eigenvectors working 
+%		(\evecs{X}{\ve{v}}{v1}{v2}{x11}{x21}{x12}{x22})
+					
+\begin{document}
+
+
+\begin{enumerate}
+% Q1
+\que {Q1}
+	
+	Answer
+	
+
+% Q2
+\que{Q2}
+
+	Answer
+\end{enumerate}
+
+
+\end{document}
