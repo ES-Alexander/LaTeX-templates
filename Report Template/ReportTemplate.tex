@@ -1,0 +1,381 @@
+\documentclass[11pt, a4paper]{article}
+
+% Macro for declaring and setting lengths (\deflength{name}{value})
+\newcommand{\deflength}[2]{\newlength{#1} \setlength{#1}{#2}}
+
+% ---------- DOCUMENT SETUP -----------%
+
+% Margin (comment out the undesired option)
+
+% Set all using totalmargin %
+\deflength{\totalMargin}{2.5cm}
+
+\deflength{\topMargin}{\totalMargin}
+\deflength{\bottomMargin}{\totalMargin}
+\deflength{\leftMargin}{\totalMargin}
+\deflength{\rightMargin}{\totalMargin}
+
+% Set each individually %
+%\deflength{\topmargin}{2.5cm}
+%\deflength{\bottommargin}{2.5cm}
+%\deflength{\leftmargin}{2.5cm}
+%\deflength{\rightmargin}{2.5cm}
+
+
+% Institution
+\newcommand{\institution}{The University of Queensland}
+
+% Course code
+\newcommand{\courseCode}{Course Code}
+
+% Course Title
+\newcommand{\courseTitle}{Course Title}
+
+% Document Title
+\newcommand{\documentTitle}{Document Title}
+
+% Author(s)
+% Relevant to options 1 and 2, ignored in option 3.
+\newcommand{\authorFirstName}{First}
+\newcommand{\authorLastName}{Last}
+\newcommand{\authorSNum}{SNum}
+
+% Relevant to options 2 and 3, ignored in option 1.
+\newcommand{\teamMembers}{
+	% Team member names and (student numbers)
+	First1 \textsc{Last1} (snum1)\\
+	First2 \textsc{Last2} (snum2)
+}
+
+% Relevant to option 3 only.
+\newcommand{\authorDenoter}{Authors/Team Members}
+
+
+%% COMMENT OUT UNDESIRED OPTIONS FULLY:
+
+% 1 Author, no others
+% start1:
+%\newcommand{\titlepageAuthors}{
+%	{\large\textit{Author}}\\
+%	\authorFirstName \textsc{ \authorLastName} (\authorSNum)\\[2cm]
+%}
+%% end1.
+
+
+% 1 Author with team members
+% start2:
+\newcommand{\titlepageAuthors}{
+	\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\large
+				\textit{Author}\\
+				\authorFirstName \textsc{ \authorLastName}
+				 	(\authorSNum)
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\large
+				\textit{Team Members}\\
+				\teamMembers
+			\end{flushright}
+		\end{minipage}\\[2cm]
+}
+% end2.
+
+% Set of authors/team members
+%% start3:
+%\newcommand{\titlepageAuthors}{
+%	\large \textit{\authorDenoter}\\
+%	\teamMembers \\[2cm]
+%}
+%% end3.
+		
+% Header
+\newcommand{\rightHeader}{Class - Document ID 1}
+\newcommand{\leftHeader}{\courseCode}
+
+% Section Colours (RGB)
+\newcommand{\sectionColour}{0, 51, 204}
+\newcommand{\subsectionColour}{31, 73, 125}
+\newcommand{\subsubsectionColour}{79, 129, 189}
+
+% Table Header Colour (RGB)
+\newcommand{\tableHeadColour}{219,229,241}
+
+% Table of Contents Depth (Uncomment Desired)
+
+%\setcounter{tocdepth}{-1} % only parts
+%\setcounter{tocdepth}{0} % only parts and chapters
+%\setcounter{tocdepth}{1} % part, chapters, sections
+%\setcounter{tocdepth}{2} % part, chapters, sections, subsections
+\setcounter{tocdepth}{3} % part, chapters, sections, subsections,
+% 											subsubsections
+
+% Includes the relevant setup for a report.
+% Access this file to change heading colours and other setup features
+\input{./ReportSetup.tex}
+
+
+%% FIGURES/IMAGES
+% graphics paths, relative to current folder.
+\graphicspath{{images/}}
+
+
+
+
+
+%% DOCUMENT BEGINS HERE
+
+\begin{document}
+\setafport
+
+%sets frontmatter page number to roman numerals
+\pagenumbering{roman} 
+    
+    % Includes a report titlepage. File can be edited if required.
+    \input{./ReportTitlepage.tex}
+ 
+    \newpage % creates a new page
+
+ % * means no numbering, and not included in table of contents
+\section*{Executive Summary}
+
+    usefulness of project, project task, external resources used (programs, approaches, etc.)
+
+    \subsection*{Project Summary}
+    
+        Design requirements include:
+        % removes space before list
+        \vspace{-0.7\topsep} 
+        \begin{itemize}
+            \item Main
+            \begin{itemize}
+                \item[o] Sub
+            \end{itemize}
+        \end{itemize}
+        
+        Technical and behavioural modelling showed:
+        \vspace{-0.7\topsep}
+        \begin{itemize}
+            \item Main
+        \end{itemize}
+        
+        Final design choice, based off scale:
+        \vspace{-0.7\topsep}
+        \begin{itemize}
+            \item Main
+        \end{itemize}
+        
+        project current stage of development, future improvements/further considerations
+        
+\newpage
+% creates table of contents based on section, subsection, 
+%   and subsubsections
+\tableofcontents 
+% creates list of figures based on figures in document
+\listoffigures 
+% creates list of tables based on tables in document
+\listoftables 
+
+\newpage
+\pagenumbering{arabic} %sets body page numbering to arabic numerals
+
+\section{Section} \label{sec: Section}
+
+    \subsection{Subsection} \label{ssec: Subsection}
+    
+    		\subsubsection{SubSubSection} \label{sssec: SubSubSection}
+     
+
+\newpage
+\begin{thebibliography}{2}
+    \bibitem{Reference} LastName, I.N. (year). Title. [e-book] Accessed 12 October 2016, Available from http://website.com.au/details.
+    
+    \bibitem{Other} Other N. \& Other2. S.P. (year) Title. Source.
+\end{thebibliography}
+
+%The appendices start here
+\newpage
+\begin{appendix}
+
+\section{Appendix Name} \label{a: Appendix Name}
+    
+    \subsection{Appendix Subsection} \label{as: Appendix Subsection}
+        
+        
+\end{appendix}
+
+\end{document}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------- COMMAND USAGE ---------------------- %
+
+\comment{%%
+    %% MINIPAGES
+    \begin{minipage}{0.4\linewidth}
+    % minipages have their own size within the main page, as well as their
+    % own footnotes and other specified geometry/text features.
+    \end{minipage}
+    
+    %% LISTS
+    % removes space before list
+    \vspace{-0.7\topsep} 
+    \begin{itemize}
+        \item Main
+        \begin{itemize}
+            \item[o] Sub
+        \end{itemize}
+    \end{itemize}
+    
+    %% FOOTNOTES
+    % Sets the footnotetext with the key of the contents of the square
+    % brackets (used when creating footnotes in minipages)
+    \footnotetext[1]{Text in footnote} 
+    % in the main page  standard footnotes can be created using
+    % \footnote{•}
+    \footnote{Text in footnote}
+    
+    %% PAGENUMBERING
+    \pagenumbering{roman} % Roman numerals (contents, cover page)
+    \pagenumbering{arabic} % Arabic numerals (body, appendices)
+    
+    %% COLUMNS
+    % Sets two columns for this section of the document
+    \begin{multicols}{2} 
+        <Text in first column>
+        \columnbreak % this breaks to the next column
+        <Text in second column>
+    \end{multicols}
+    
+    %% TABLES
+    \begin{table}[H]
+        \footnotesize % sets text size to that of footnotes, within table
+        \centering % centers table on screen
+        \caption{Table Caption}
+        \label{tab: Table Caption}
+        % Using p{n\linewidth} sets that column to justified, with width n times
+        % text-width of the line.
+        % Using c sets that column to be centered, with width auto-scaled.
+        % Vertical line sets that column to have a vertical border there
+        % Space separates columns without a border.
+        \begin{tabular}{|c|c|p{0.5\linewidth}|} 
+            \hline % adds a horizontal line
+            \rowcolor{tableHeadColour} 
+            		\textbf{Heading1}  & \textbf{Heading2} &
+            		\textbf{Heading3}  \\ %\\ changes to next row of table
+            \hline
+            \textbf{Side Heading} & Text & Text\\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    %% CODE
+    % the following code allows for displaying programming code, telling
+    % LaTeX to just print the contents rather than try to read it as LaTeX
+    % text.
+    \begin{lstlisting}
+        /** Code goes in here */
+    \end{lstlisting}
+    
+    %% PAGE RESIZING/ROTATING
+    \setafport % Make the following pages A4 portrait
+    \setafland % Make the following pages A4 landscape
+    \setatport % Make the following pages A3 landscape
+    \setatland % Make the following pages A3 landscape
+    
+    %% FIGURES
+    % Insert figures with 
+    \fig{scale}{filename}{caption \label{fig: <label>}}
+    % Insert framed figures with
+    \framefig{scale}{filename}{caption \label{fig: <label>}}
+    % Insert sub-figures (within a figure)
+	\subfig{alignment}{fig-width}{img-scale/height/width}{filename}{caption}
+	% alignment = t(top) / b(bottom)
+	% width e.g. = 0.5\textwidth
+	% scale e.g. = scale=0.5 / height=5cm / width=3in
+	% filename e.g. = image / image.jpg / etc
+	% caption e.g. = Descriptive subfigure caption
+	%% e.g.
+	\begin{figure}[H]
+		\centering
+		\subfig{t}{}{}{}{caption \label{sfig: caption}}
+		~ % (next column)
+		\subfig{t}{}{}{}{caption \label{sfig: caption}}
+		\caption{caption \label{fig: caption}}
+	\end{figure}
+	 
+	 %% REFERENCING
+	 % Reference figures:
+	 \figref{label}
+	 % Reference subfigures:
+	  \sfigref{label}
+	 % Reference tables:
+	 \tabref{label}
+	 % Reference sections:
+	 \secref{label}
+    
+    %% MULTI-LINE COMMENTS
+	\comment{<text>} % multiple lines of comment in the tex code
+	\dcom{<text>} % multi-line comment displayed in red in the document
+	
+	%% UNITS IN MATH ENVIRONMENT
+	% insert units into the math environment, with a space included
+	% between the maths and the unit (e.g. \unit{m}^3)
+	\unit{<unit>}
+	% insert units without a space
+	\nsunit{<unit>}
+	
+	%% POWERS OF TEN
+	% Insert *10^n with \E{n} (e.g. \E{-5})
+	\E{power} % from within math environment
+	\tE{power} % from within text environment
+	
+	%% ADDITIONAL MATH ENVIRONMENT SHORTCUTS
+	% Math formatted differentials (e.g. \D x)
+	\D var
+	
+	% Bolded vector notation (e.g. \ve{r})
+	\ve{var}
+	
+	% Commands for left/right surrounding braces 
+	\lr{thing} % -> \left( thing \right), 
+	\lrs{thing} %-> \left[ thing \right],
+	\lra{thing} %-> \left | thing \right |
+
+	% Commands for integrals
+	% 		\eint{integrand}{wrt var}
+	%		\eiint{integrand}{wrt var inner}{wrt var outer}
+	%		\dint{lower limit}{upper limit}{integrand}{wrt var}
+	%		\diint{outer_low}{out_high}{inner_low}{in_high}{integrand}{in_var}{out_var}
+	
+	% Partial Derivatives (e.g. \del{x}{y})
+	\del{func/var}{wrt var}
+	
+	% Full Derivatives - nth order (e.g. \der[2]{y}{t} or \der{y}{x}
+	\der[order]{func/var}{wrt var} % order is optional, hence square brackets
+	
+	% Trigonometric (optional power) (e.g. \cos[2]{x} or \sin{4} or \tan[-1]{y})
+	\cos[order]{argument}
+	\sin[order]{argument}
+	\tan[order]{argument}	
+	
+	% Logarithm (optional base) (e.g. \log[2]{x} or \log{y})
+	\log[base]{argument}
+
+	% Quadratic Formula (e.g. \qf{5}{3}{2})
+	\qf{a}{b}{c}
+	
+	% 2x2 Eigenvalues working (e.g. \evals{X}{x11}{x21}{x12}{x22})
+	
+	% Command for 2x2 eigenvectors working 
+	%		(e.g. \evecs{X}{\ve{v}}{v1}{v2}{x11}{x21}{x12}{x22})
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

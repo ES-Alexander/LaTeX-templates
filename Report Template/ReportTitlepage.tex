@@ -1,0 +1,43 @@
+\begin{titlepage} 
+    % Suppresses displaying the page number on the title page and the
+    % subsequent page counts as page 1
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+	% Defines a new command for horizontal lines, change thickness here
+	
+	\center % Centre everything on the page
+	
+	%% LOGO
+	% Include a department/university logo
+	\includegraphics[width=0.45\textwidth]{UQ_logo.jpg}\\[1.7cm]	
+	
+	%% HEADINGS
+	
+	% Main heading such as the name of your university/college
+	\textsc{\LARGE \institution}\\[1.2cm] 
+	
+	% Course name
+	\textsc{\Large \courseCode}\\[0.7cm] 
+	
+	% Course title
+	\textsc{\large \courseTitle}\\[0.7cm] 
+	
+	\HRule\\[0.65cm]
+	
+	% Document Title
+	{\huge\bfseries \documentTitle}\\[0.3cm]
+	
+	\HRule\\[1.7cm]
+	
+	%% AUTHOR(S)
+	\titlepageAuthors
+	
+	%% DATE
+	\vfill % Position the date 2/3 down the remaining page
+	% Date, change the \today to a set date if you want to be precise
+	{\large\today} 
+	
+	%----------------------------------------------------------------------------------------
+	
+	\vfill % Push the date up 1/3 of the remaining page
+	
+\end{titlepage}

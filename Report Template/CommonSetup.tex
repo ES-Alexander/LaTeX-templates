@@ -1,0 +1,134 @@
+% ------------- GENERAL -------------- %
+\usepackage{amsfonts} % fonts package
+% math, symbols, and theorems packages (esint -> oiint, mathrsfs -> \mathscr{L})
+\usepackage{amsmath, amsthm, amssymb, esint, mathrsfs} 
+\usepackage{enumerate} % Allows for roman numbering of lists
+% colour package (colour!num -> colour @ num% opacity)
+\usepackage{xcolor} 
+\usepackage{listings} % nicely formatted code
+
+% -------------- HEADER --------------- %
+\usepackage{fancyhdr} % creates header
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftHeader} % left header
+\rhead{\rightHeader} % right header
+% page number bottom right (instead of default middle)
+\rfoot{\thepage} 
+
+%-------------------FIGURES ---------------------%
+\usepackage{graphicx, float, caption}
+% package enabling subfigures
+\usepackage{subcaption}
+
+% \fig{scale 1=100%}{filename}{caption \label{labelname}}  (label optional)
+\newcommand{\fig}[3]{\begin{figure}[H] 
+    \centering
+    \includegraphics[scale=#1]{#2}
+    \caption{#3}
+\end{figure}}
+
+% Insert figures with a frame
+\newcommand{\framefig}[3]{\begin{figure}[H] 
+    \centering
+    \frame{\includegraphics[scale=#1]{#2}}
+    \caption{#3}
+\end{figure}}
+
+% Insert sub-figures (within a figure)
+%\subfig{alignment}{fig-width}{img-scale/height/width}{filename}{caption}
+% alignment = t(top) / b(bottom)
+% width e.g. = 0.5\textwidth
+% scale e.g. = scale=0.5 / height=5cm / width=3in
+% filename e.g. = image / image.jpg / etc
+% caption e.g. = Descriptive subfigure caption
+\newcommand{\subfig}[5]{
+    \begin{subfigure}[#1]{#2}
+        \centering
+        \includegraphics[#3]{#4}
+        \caption{#5}
+    \end{subfigure}
+}
+
+%-------------------COMMENTS---------------------%
+% Insert multi-line comments with \comment{<text>}
+\newcommand{\comment}[1]{} 
+% Insert displayed multi-line comments using \dcom{<text>}
+\newcommand{\dcom}[1]{\textcolor{red}{\textit{#1}}}
+
+%-----------------REFERENCING------------------%
+% Reference figures:
+\newcommand{\figref}[1]{Figure \ref{#1}}
+% Reference subfigures:
+\newcommand{\sfigref}[1]{Figure \ref{#1})}
+% Reference tables:
+ \newcommand{\tabref}[1]{Table \ref{#1}}
+% Reference sections:
+ \newcommand{\secref}[1]{Section \ref{#1}}
+
+%--------------MATHS NOTATIONS---------------%
+% Insert units with \unit{<unit>} (e.g. \unit{m}^3)
+\newcommand{\unit}[1]{\ \text{#1}}
+\newcommand{\nsunit}[1]{\text{#1}}
+
+% Insert *10^n with \E{n} (e.g. \E{-5})
+\newcommand{\E}[1]{\times 10^{#1}}
+\newcommand{\tE}[1]{$\E{#1}$}
+
+% Command for math formatted differentials (use \D var)
+\newcommand{\D}{\ \mathrm{d}} 
+
+% Command for degrees symbol
+\renewcommand{\deg}[1]{{#1}^\circ}
+
+% Command for short bolded vector notation
+\newcommand{\ve}[1]{\mathbf{#1}}
+
+% Commands for left/right surrounding brackets
+\newcommand{\lr}[1]{\left( #1 \right)}
+\newcommand{\lrs}[1]{\left[ #1 \right]}
+\newcommand{\lra}[1]{\left | #1 \right |}
+
+% Commands for integrals
+\newcommand{\eint}[2]{\int #1 \D #2}
+\newcommand{\eiint}[3]{\iint #1 \D #2 \D #3}
+\newcommand{\dint}[4]{\int_{#1}^{#2} #3 \D #4} % definite integral
+\newcommand{\diint}[7]{\dint{#1}{#2}{\dint{#3}{#4}{#5}{#6}}{#7}}
+
+% Command for partial derivatives
+\newcommand{\del}[2]{\dfrac{\partial #1}{\partial #2}}
+
+% Command for full derivatives (nth order)
+\newcommand{\der}[3][]{\dfrac{\D ^{#1} #2}{\D {#3}^{#1}}}
+
+% Command for common redefinitions (brackets included)
+\renewcommand{\cos}[2][]{\text{cos}^{#1}\!\lr{#2}} % optional power
+\renewcommand{\sin}[2][]{\text{sin}^{#1}\!\lr{#2}} % optional power
+\renewcommand{\tan}[2][]{\text{tan}^{#1}\!\lr{#2}} % optional power
+\renewcommand{\ln}[1]{\text{ln}\!\lr{#1}}
+\renewcommand{\log}[2][]{\text{log}_{#1}\!\lr{#2}} % optional base
+
+% Command for quadratic formula
+\newcommand{\qf}[3]{\dfrac{-(#2)\pm\sqrt{(#2)^2-4\cdot #1 \cdot #3}}{2\cdot #1}}
+
+% Command for 2x2 eigenvalues working
+\newcommand{\evals}[5]{0 &= \det(#1 - \lambda I)\\
+				&= \left| \begin{pmatrix} #2 & #3\\ #4 & #5 \end{pmatrix} - 
+					\begin{pmatrix} \lambda & 0\\ 0 & \lambda \end{pmatrix} \right|\\
+				&= \begin{vmatrix}
+						#2 - \lambda & #3\\
+						#4 & #5 - \lambda
+					\end{vmatrix}\\
+				&= (#2-\lambda)(#5 - \lambda) - (#3)(#4)}
+
+% Command for 2x2 eigenvectors working
+\newcommand{\evecs}[8]{#1 #2 &= \lambda #2\\
+				(#1 - \lambda I) #2 &= \ve{0}\\
+				\begin{pmatrix}
+						#5 - \lambda & #6\\
+						#7 & #8 - \lambda
+					\end{pmatrix} \begin{pmatrix}
+						#3 \\ #4
+					\end{pmatrix} &= \begin{pmatrix}
+						0 \\ 0
+					\end{pmatrix}}
