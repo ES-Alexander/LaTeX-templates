@@ -310,6 +310,10 @@
 		\subfig{t}{}{}{}{caption \label{sfig: caption}}
 		\caption{caption \label{fig: caption}}
 	\end{figure}
+	
+	%% CODE
+	\matlab{filename}{label} % inputs a formatted .m file with caption "Listing: label"
+	\python{filename}{label} % inputs a formatted .py file with caption "Listing: label"
 	 
 	 %% REFERENCING
 	 % Reference figures:
@@ -318,8 +322,12 @@
 	  \sfigref{label}
 	 % Reference tables:
 	 \tabref{label}
+	 % Reference code:
+	 \coderef{label}
 	 % Reference sections:
 	 \secref{label}
+	 % Reference appendices:
+	 \appref{label}
     
     %% MULTI-LINE COMMENTS
 	\comment{<text>} % multiple lines of comment in the tex code
