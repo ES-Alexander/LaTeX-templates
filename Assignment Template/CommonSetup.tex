@@ -85,11 +85,12 @@
 % Use as \lstinputlisting[\python]{code/filename.py}
 
 \newcounter{codeCounter}
+
 \newcommand{\codeCaption}[1]{
-    \centering
+    \centering{ % braces prevent centering of document outside of caption
     \stepcounter{codeCounter}
     \vspace{\topsep}
-    Listing \arabic{codeCounter}: {#1}
+    Listing \arabic{codeCounter}: {#1}}
 }
 
 \newcommand{\python}[2]{
