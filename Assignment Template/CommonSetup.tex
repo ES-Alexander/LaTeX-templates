@@ -87,18 +87,21 @@
 \newcounter{codeCounter}
 
 \newcommand{\codeCaption}[1]{
-    \centering{ % braces prevent centering of document outside of caption
-    \stepcounter{codeCounter}
-    \vspace{\topsep}
-    Listing \arabic{codeCounter}: {#1}}
+    \refstepcounter{codeCounter}
+   	\vspace{-\topsep}
+	\begin{center}
+		Listing \arabic{codeCounter}: {#1}
+	\end{center}
 }
 
 \newcommand{\python}[2]{
+	\vspace{\topsep}
     \lstinputlisting[\pythonstyle]{#1}
     \codeCaption{#2}
 }
 
 \newcommand{\matlab}[2]{
+	\vspace{\topsep}
     \lstset{style=Matlab-editor}
     \lstinputlisting{#1}
     \codeCaption{#2}
