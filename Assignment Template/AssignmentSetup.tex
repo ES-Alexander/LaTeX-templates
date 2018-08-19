@@ -1,15 +1,36 @@
 \usepackage[margin=2.5cm]{geometry}
 
-\input{./CommonSetup.tex}
+% Macro for declaring and setting lengths (\deflength{name}{value})
+\newcommand{\deflength}[2]{\newlength{#1} \setlength{#1}{#2}}
 
-% Allows for margin specification (/begin{adjustwidth}{left}{right})
+% ---------- DOCUMENT SETUP -----------%
+
+% Margin (comment out the undesired option)
+
+% Set all using totalmargin %
+\deflength{\totalMargin}{2.5cm}
+
+\deflength{\topMargin}{\totalMargin}
+\deflength{\bottomMargin}{\totalMargin}
+\deflength{\leftMargin}{\totalMargin}
+\deflength{\rightMargin}{\totalMargin}
+
+% Set each individually %
+%\deflength{\topmargin}{2.5cm}
+%\deflength{\bottommargin}{2.5cm}
+%\deflength{\leftmargin}{2.5cm}
+%\deflength{\rightmargin}{2.5cm}
+
+% Allows for margin specification (\begin{adjustwidth}{left}{right})
 % \usepackage{changepage} 
+
+\input{./CommonSetup.tex}
 
 %-------------------QUESTIONS---------------------%
 % Command for entering questions
-\newcommand{\que}[1]{
+\newcommand{\que}[2][]{
 % Sets question text to specified colour, and makes it bold
-\color{black!60} \item \textbf{#1} 
+\color{black!60} \item[#1] \textbf{#2} 
 % Sets following text to black
 \color{black} 
 }
