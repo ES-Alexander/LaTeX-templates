@@ -17,7 +17,7 @@
 
 % package to nicely format URLs and hyperlinks
 \usepackage{hyperref} % \url{...}
-\hypersetup{colorlinks, urlcolor=blue}
+\hypersetup{colorlinks, urlcolor=blue, linkcolor=black, citecolor=black}
 
 % ------------- COLOURS --------------%
 % allows for coloured tables
@@ -51,46 +51,3 @@
 \setlength\parindent{0pt} 
 % removes line spacing between list items.
 \setlist{noitemsep} 
-
-% ------------ PAGE SIZES ------------ %
-% Long side of A4 paper
-\deflength{\aflong}{29.7cm}
-% Short side of A4 paper
-\deflength{\afshort}{21cm}
-% Long side of A3 paper
-\deflength{\atlong}{42cm}
-% Short side of A3 paper
-\deflength{\atshort}{29.7cm}
-
-% Text width can be determined using (pagewidth - 2\totalmargin)
-
-% Set page size with:
-% \eject \pdfpagewidth=<width> \pdfpageheight=<height>
-
-% Set a page to a new size (\setpagesize{width}{height})
-\newcommand{\setpagesize}[2]{
-		\eject 
-		% set height and width
-		\pdfpagewidth = #1 \pdfpageheight = #2
-		% adjust horizontal and vertical offset w.r.t. a4 portrait basis
-		\newgeometry{
-			top = \topMargin, 
-			bottom = \bottomMargin - (#2 - \aflong),
-			left = \leftMargin,
-			right = \rightMargin - (#1 - \afshort)
-		}
-		% refresh header and footer to suit new page size
-		\fancyheadoffset[R]{0cm}  \fancyfootoffset[R]{0cm}
-}
-
-% Sets page to A4 portrait
-\newcommand{\setafport}{\setpagesize{\afshort}{\aflong}}
-
-% Sets page to A3 landscape
-\newcommand{\setatland}{\setpagesize{\atlong}{\atshort}}
-
-% Sets page to A4 landscape
-\newcommand{\setafland}{\setpagesize{\aflong}{\afshort}}
-
-% Sets page to A3 portrait
-\newcommand{\setatport}{\setpagesize{\atshort}{\atlong}} 
