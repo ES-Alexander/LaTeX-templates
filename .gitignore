@@ -1,0 +1,10 @@
+# Do not track the following
+
+*.aux
+*.lof
+*.log
+*.lot
+*.out
+*.pdf
+*.gz
+*.toc
