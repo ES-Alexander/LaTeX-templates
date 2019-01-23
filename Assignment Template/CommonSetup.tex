@@ -3,9 +3,8 @@
 % math, symbols, and theorems packages (esint -> oiint, mathrsfs -> \mathscr{L})
 \usepackage{amsmath, amsthm, amssymb, esint, mathrsfs} 
 \usepackage{mathtools} % Provides \Aboxed{...}, boxed align equations.
-\usepackage{enumerate} % Allows for roman numbering of lists
-% colour package (colour!num -> colour @ num% opacity)
-\usepackage{xcolor} 
+\usepackage{enumitem} % Allows for roman numbering of lists, start=N, etc
+\usepackage{xcolor} % colour package (colour!num -> colour @ num% opacity)
 \usepackage{listings} % nicely formatted code
 
 % -------------- HEADER --------------- %
@@ -25,7 +24,7 @@
 % Long side of A3 paper
 \deflength{\atlong}{42cm}
 % Short side of A3 paper
-\deflength{\atshort}{29.7cm}
+\deflength{\atshort}{\aflong}
 
 % Text width can be determined using (pagewidth - 2\totalmargin)
 
@@ -48,17 +47,11 @@
 		\fancyheadoffset[R]{0cm}  \fancyfootoffset[R]{0cm}
 }
 
-% Sets page to A4 portrait
-\newcommand{\setafport}{\setpagesize{\afshort}{\aflong}}
-
-% Sets page to A3 landscape
-\newcommand{\setatland}{\setpagesize{\atlong}{\atshort}}
-
-% Sets page to A4 landscape
-\newcommand{\setafland}{\setpagesize{\aflong}{\afshort}}
-
-% Sets page to A3 portrait
-\newcommand{\setatport}{\setpagesize{\atshort}{\atlong}} 
+% Sets page to:
+\newcommand{\setafport}{\setpagesize{\afshort}{\aflong}} % A4 portrait
+\newcommand{\setatland}{\setpagesize{\atlong}{\atshort}} % A3 landscape
+\newcommand{\setafland}{\setpagesize{\aflong}{\afshort}} % A4 landscape
+\newcommand{\setatport}{\setpagesize{\atshort}{\atlong}} % A3 portrait
 
 %-------------------FIGURES ---------------------%
 \usepackage{graphicx, float, caption}
