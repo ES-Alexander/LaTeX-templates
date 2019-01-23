@@ -1,4 +1,4 @@
-\usepackage[margin=2.5cm]{geometry}
+\usepackage{geometry}
 
 % Macro for declaring and setting lengths (\deflength{name}{value})
 \newcommand{\deflength}[2]{\newlength{#1} \setlength{#1}{#2}}
@@ -22,17 +22,27 @@
 %\deflength{\rightmargin}{2.5cm}
 
 % Allows for margin specification (\begin{adjustwidth}{left}{right})
-% \usepackage{changepage} 
+%\usepackage{changepage} 
 
 \input{./CommonSetup.tex}
 
 %-------------------QUESTIONS---------------------%
 % Command for entering questions
-\newcommand{\que}[2][]{
-% Sets question text to specified colour, and makes it bold
-\color{black!60} \item[#1] \textbf{#2} 
-% Sets following text to black
-\color{black} 
+\makeatletter
+\newcommand{\que}[2][\@nil]{
+  \def\tmp{#1} % define a temporary variable for checking purposes
+  
+  \color{black!60} % set the question text to grey
+  % conditional code depending on existence of optional argument
+  \ifx\tmp\@nnil
+    \item
+  \else
+    \item[#1]
+  \fi
+  
+  \textbf{#2} % bold (and grey) question text
+  \color{black} % return the following text to black
 }
+\makeatother
 					
 					

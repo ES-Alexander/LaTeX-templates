@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt, a4paper]{article}
 
 % Specify left header (e.g. course code)
 \newcommand{\leftHeader}{Left Header}
@@ -7,6 +7,49 @@
 
 \input{./AssignmentSetup.tex} % Insert the setup file
 
+% Images stored in 'images' folder, relative to document
+\graphicspath{{./images/}}
+
+
+% Document starts here					
+\begin{document} \setafport
+\begin{enumerate}
+% Q1
+\que{First question to answer}
+	
+	Answer
+	
+% Q2
+\que{Second question to answer}
+  
+  Answer
+\end{enumerate}
+
+% skip a few questions and start again at 5.
+\vspace{-1.5em} % removes default gap between the enumerates
+\begin{enumerate}[start=5]
+% Q5
+\que{Third question to answer}
+
+  Answer
+  
+% Q6
+\que{Fourth question to answer}
+
+  Answer
+  
+% Q12 - manually specify the question number/
+\que[12.]{Fifth question to answer}
+
+  Answer
+\end{enumerate}
+\end{document}
+
+
+
+
+
+%%--------------------- COMMAND USAGE ---------------------%%
 %% FIGURES
 % Normal figure:
 % \fig{scale 1=100%}{filename}{caption \label{labelname}}  (label optional)
@@ -21,8 +64,6 @@
 % scale e.g. = scale=0.5 / height=5cm / width=3in
 % filename e.g. = image / image.jpg / etc
 % caption e.g. = Descriptive subfigure caption
-
-\graphicspath{{./images/}} % Images stored in "images" folder, relative to document
 
 %% COMMENTS
 % Insert multi-line comments with \comment{<text>}
@@ -93,22 +134,3 @@
 
 % Command for 2x2 eigenvectors working 
 %		(\evecs{X}{\ve{v}}{v1}{v2}{x11}{x21}{x12}{x22})
-					
-\begin{document}
-
-
-\begin{enumerate}
-% Q1
-\que {Q1}
-	
-	Answer
-	
-
-% Q2
-\que{Q2}
-
-	Answer
-\end{enumerate}
-
-
-\end{document}
