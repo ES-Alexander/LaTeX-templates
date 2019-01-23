@@ -90,7 +90,7 @@
 % minipage styling (not sure if used, but might be)
 \usepackage{genmpage}
 % allows for list and table specification, including merged cells
-\usepackage{enumitem, multicol, multirow} 
+\usepackage{multicol, multirow}
 % allows for multi-page tables, as well as tables as wide as you want
 \usepackage{longtable} 
 
@@ -99,11 +99,22 @@
 % removes line spacing between list items.
 \setlist{noitemsep} 
 
-% a 'topic' command for bolded topics in the agenda and minutes.
-\newcommand{\topic}[1]{\item \textbf{#1}}
-
-% an 'owner' command for who owns a given topic
+% an 'owner' command for specifying who owns a given topic
 \newcommand{\owner}[1]{\textit{(#1)}}
+
+% a 'topic' command for bolded topics in the agenda and minutes
+\makeatletter
+\newcommand{\topic}[2][\@nil]{
+  \def\tmp{#1}
+  
+  \item \textbf{#2}
+  \ifx\tmp\@nnil
+    % do nothing
+  \else
+    \owner{#1}
+  \fi
+}
+\makeatother
 
 % an allocation command for specifying who needs to do what
 \newcommand{\alloc}[1]{\textbf{#1:}}  % \alloc{Name} things to do
