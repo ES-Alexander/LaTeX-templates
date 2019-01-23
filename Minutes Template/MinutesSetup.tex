@@ -7,7 +7,6 @@
 % Defines a new command for horizontal lines, change thickness here
 \newcommand{\HRule}{\rule{\linewidth}{0.25mm}} 
 
-
 % Margin (comment out the undesired option)
 
 % Set all using totalmargin %
@@ -99,3 +98,12 @@
 \setlength\parindent{0pt} 
 % removes line spacing between list items.
 \setlist{noitemsep} 
+
+% a 'topic' command for bolded topics in the agenda and minutes.
+\newcommand{\topic}[1]{\item \textbf{#1}}
+
+% an 'owner' command for who owns a given topic
+\newcommand{\owner}[1]{\textit{(#1)}}
+
+% an allocation command for specifying who needs to do what
+\newcommand{\alloc}[1]{\textbf{#1:}}  % \alloc{Name} things to do

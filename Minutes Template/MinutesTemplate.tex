@@ -44,17 +44,37 @@
 \section{Proposed Agenda} \label{sec: Proposed Agenda}
 
 	\begin{enumerate}
-		\item Topic1
-		\item Topic2
+		% \topic{Topic Name/Descriptor} \owner{Optional Owner(s)}
+		\topic{Topic1} \owner{First2}\\
+			Extra details
+		\topic{Topic2} \owner{First1, First2}
+		\topic{Topic3} % no owner implies relevant to and owned by all
 	\end{enumerate}
     		
 \section{Meeting Minutes} \label{sec: Meeting Minutes}
 
-	\dcom{Copy agenda and expand}
+	\begin{enumerate}
+		% \topic{Topic Name/Descriptor}
+		\topic{Topic1}\\
+			Relevant notes/decisions
+		\topic{Topic2}\\
+			Removed from agenda.
+		\topic{Topic3}\\
+		  New client communications and plan established.
+	\end{enumerate}
 	
-	Test text and things like that that are super duper important to find out 
-	what the deal is here with this funky shiznit and whatnot yo, else how
-	are we supposed to deal?
+\section{Next Steps} \label{sec: Next Steps}
+
+	\begin{itemize}
+	  \topic{Next Meeting}\\
+			% Date, Time, Location (as accurately as known)
+			Two weeks (26/2 or 28/2)
+		\topic{TODO}\\
+			% Actions to complete (with due date (no due date implies next meeting)
+			%   and allocation to relevant person/people)
+			\alloc{First1} prepare X resources.\\
+			\alloc{First1, First2} make a document template (14/2), run tests.
+	\end{itemize}
 
 
 \end{document}
