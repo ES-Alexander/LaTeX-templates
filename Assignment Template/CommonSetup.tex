@@ -107,19 +107,6 @@
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 \definecolor{lightgrey}{rgb}{0.7,0.7,0.7}
 \definecolor{black}{rgb}{0,0,0}
-\newcommand{\pythonstyle}{language=Python,
-            numbers=left, numberstyle=\color{lightgrey}\small,
-            numbersep=8pt,
-            basicstyle=\ttm, otherkeywords={self},
-            keywordstyle=\ttb\color{deepblue},
-            emph={MyClass,__init__},          % Custom highlighting
-            emphstyle=\ttb\color{deepred},    % Custom highlighting style
-            stringstyle=\color{deepgreen},
-            commentstyle=\color{deepred},
-            frame=single,
-            showstringspaces=false,
-            breaklines=true} % Python nice code format
-% Use as \lstinputlisting[\python]{code/filename.py}
 
 \newcounter{codeCounter}
 
@@ -131,12 +118,25 @@
 	\end{center}
 }
 
+% use as \python{filename}{caption label}
 \newcommand{\python}[2]{
 	\vspace{\topsep}
-    \lstinputlisting[\pythonstyle]{#1}
+    \lstinputlisting[language=Python,
+            numbers=left, numberstyle=\color{lightgrey}\small,
+            numbersep=8pt,
+            basicstyle=\ttm, otherkeywords={self},
+            keywordstyle=\ttb\color{deepblue},
+            emph={MyClass,__init__},          % Custom highlighting
+            emphstyle=\ttb\color{deepred},    % Custom highlighting style
+            stringstyle=\color{deepgreen},
+            commentstyle=\color{deepred},
+            frame=single,
+            showstringspaces=false,
+            breaklines=true]{#1}
     \codeCaption{#2}
 }
 
+% use as \matlab{filename}{caption label}
 \newcommand{\matlab}[2]{
 	\vspace{\topsep}
     \lstset{style=Matlab-editor}
