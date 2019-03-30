@@ -185,11 +185,12 @@
 \newpage
 \pagenumbering{arabic} %sets body page numbering to arabic numerals
 
-\section{Section} \label{sec: Section}
+\sectionl{Section} % refered to with \secref{Section}
 
-    \subsection{Subsection} \label{ssec: Subsection}
+    \subsectionl{Subsection} % referred to with \secref[s]{Subsection}
     
-    		\subsubsection{SubSubSection} \label{sssec: SubSubSection}
+    		\subsubsectionl{SubSubSection}
+    		% referred to with \secref[ss]{SubSubSection}
      
 
 \newpage
@@ -203,9 +204,13 @@
 \newpage
 \begin{appendix}
 
-\section{Appendix Name} \label{a: Appendix Name}
+\sectional{Appendix Name} % referred to with \appref{Appendix Name}
     
-    \subsection{Appendix Subsection} \label{as: Appendix Subsection}
+    \subsectional{Appendix Subsection}
+    % referred to with \appref[s]{Appendix Subsection}
+    
+        \subsubsectional{Appendix Subsubsection}
+        % referred to with \appref[ss]{Appendix Subsubsection}
         
         
 \end{appendix}
