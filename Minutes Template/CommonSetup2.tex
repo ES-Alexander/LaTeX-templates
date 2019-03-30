@@ -65,18 +65,18 @@
 % package enabling subfigures
 \usepackage{subcaption}
 
-% \fig{scale 1=100%}{filename}{caption \label{labelname}}  (label optional)
+% \fig{scale 1=100%}{filename}{caption}
 \newcommand{\fig}[3]{\begin{figure}[H] 
     \centering
     \includegraphics[scale=#1]{#2}
-    \caption{#3}
+    \caption{#3 \label{fig: #3}}
 \end{figure}}
 
 % Insert figures with a frame
 \newcommand{\framefig}[3]{\begin{figure}[H] 
     \centering
     \frame{\includegraphics[scale=#1]{#2}}
-    \caption{#3}
+    \caption{#3 \label{fig: #3}}
 \end{figure}}
 
 % Insert sub-figures (within a figure)
@@ -90,9 +90,43 @@
     \begin{subfigure}[#1]{#2}
         \centering
         \includegraphics[#3]{#4}
-        \caption{#5}
+        \caption{#5 \label{sfig: #5}}
     \end{subfigure}
 }
+
+%--------------------TABLES----------------------%
+% Use as \easytable{caption}{columns}{contents}
+%   caption e.g. = Table Caption (auto-labelled as 'tab: Table Caption')
+%   columns = column distribution, types, and separation 
+%     e.g. |c|c|p{0.5\linewidth}|
+%     Using p{n\linewidth} sets that column to justified, with width n times
+%     text-width of the line.
+%     Using c sets that column to be centered, with width auto-scaled.
+%     Vertical line sets that column to have a vertical border there
+%     Space separates columns without a border.
+%   contents = table contents
+%     e.g. 
+%      \hline % adds a horizontal line
+%      \rowcolor{tableHeadColour} 
+%      \textbf{Heading1}  & \textbf{Heading2} & \textbf{Heading3} \\ 
+%      % \\ changes to next row of table
+%      \hline
+%      \textbf{Side Heading} & Text & Text\\
+%      \hline
+\newcommand{\easytable}[3]{
+  \begin{table}[H]
+    \footnotesize % sets text size to that of footnotes, within table
+    \centering % centers table on screen
+    \caption{#1}
+    \label{tab: #1}
+    \begin{tabular}{#2} 
+      #3
+    \end{tabular}
+  \end{table}
+}
+
+\newcommand{\headingrow}{\hline\rowcolor{tableHeadColour}}
+\newcommand{\row}{\\ \hline}
 
 %-------------------COMMENTS---------------------%
 % Insert multi-line comments with \comment{<text>}
@@ -151,19 +185,37 @@
     \codeCaption{#2}
 }
 
+%------------------SECTIONS--------------------%
+
+% Normal
+\newcommand{\sectionl}[1]{\section{#1} \label{sec: #1}}
+\newcommand{\subsectionl}[1]{\subsection{#1} \label{ssec: #1}}
+\newcommand{\subsubsectionl}[1]{\subsubsection{#1} \label{sssec: #1}}
+
+% Appendices
+\newcommand{\sectional}[1]{\section{#1} \label{a: #1}}
+\newcommand{\subsectional}[1]{\subsection{#1} \label{as: #1}}
+\newcommand{\subsubsectional}[1]{\subsubsection{#1} \label{ass: #1}}
+
 %-----------------REFERENCING------------------%
+\newcommand{\reftab}[1]{\ref{tab: #1}}
+\newcommand{\reffig}[2][]{\ref{#1fig: #2}}
+\newcommand{\refsec}[2][]{\ref{#1sec: #2}}
+\newcommand{\refcode}[1]{\ref{code: #1}}
+\newcommand{\refapp}[2][]{\ref{a#1: #2}}
+
 % Reference figures:
-\newcommand{\figref}[1]{Figure \ref{#1}}
+\newcommand{\figref}[1]{Figure \reffig{#1}}
 % Reference subfigures:
-\newcommand{\sfigref}[1]{Figure \ref{#1})}
+\newcommand{\sfigref}[1]{Figure \reffig[s]{#1})}
 % Reference tables:
-\newcommand{\tabref}[1]{Table \ref{#1}}
+\newcommand{\tabref}[1]{Table \reftab{#1}}
 % Reference code:
-\newcommand{\coderef}[1]{Listing \ref{#1}}
+\newcommand{\coderef}[1]{Listing \refcode{#1}}
 % Reference sections:
-\newcommand{\secref}[1]{Section \ref{#1}}
+\newcommand{\secref}[2][]{Section \refsec[#1]{#2}}
 % Reference appendices:
-\newcommand{\appref}[1]{Appendix \ref{#1}}
+\newcommand{\appref}[1]{Appendix \refapp{#1}}
 
 %--------------MATHS NOTATIONS---------------%
 % Insert units with \unit{<unit>} (e.g. \unit{m}^3)
