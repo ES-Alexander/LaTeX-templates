@@ -155,13 +155,13 @@
   \refstepcounter{codeCounter}
   \vspace{-\topsep}
 	\begin{center}
-		Listing \arabic{codeCounter}: {#2 \label{code: 
+		Listing \arabic{codeCounter}: {#2
 			\ifx&#1&%
-			  #2 % optional arg is empty, use caption as label
+			  \label{code: #2} % optional arg is empty, use caption as label
 			\else
-			  #1 % optional arg available, use it as label
+			  \label{code: #1} % optional arg available, use it as label
 			\fi
-		}}
+		}
 	\end{center}
 }
 
