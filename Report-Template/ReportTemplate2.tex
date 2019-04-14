@@ -1,33 +1,129 @@
 \documentclass[11pt, a4paper]{article}
 
-% ---------- DOCUMENT INFORMATION -----------%
+% Macro for declaring and setting lengths (\deflength{name}{value})
+\newcommand{\deflength}[2]{\newlength{#1} \setlength{#1}{#2}}
 
-% Meeting number/ID
-\newcommand{\meetingID}{X}
+% Defines a new command for horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
 
-% Meeting Descriptor
-\newcommand{\meetingDescriptor}{XYZ}
+% ---------- DOCUMENT SETUP -----------%
 
-% Time and Location
-\newcommand{\setDate}{XX/XX/20XX}
-\newcommand{\setTime}{XX:XX}
-\newcommand{\place}	{XX - XX}
+% Margin (comment out the undesired option)
 
-% People Present
-\newcommand{\peoplePresent}{
-	First1 Last1\\
-	First2 Last2
+% Set all using totalmargin %
+\deflength{\totalMargin}{2.5cm}
+
+\deflength{\topMargin}{\totalMargin}
+\deflength{\bottomMargin}{\totalMargin}
+\deflength{\leftMargin}{\totalMargin}
+\deflength{\rightMargin}{\totalMargin}
+
+% Set each individually %
+%\deflength{\topmargin}{2.5cm}
+%\deflength{\bottommargin}{2.5cm}
+%\deflength{\leftmargin}{2.5cm}
+%\deflength{\rightmargin}{2.5cm}
+
+
+% Institution
+\newcommand{\institution}{The University of Queensland}
+
+% Course code
+\newcommand{\courseCode}{Course Code}
+
+% Course Title
+\newcommand{\courseTitle}{Course Title}
+
+% Document Title
+\newcommand{\documentTitle}{Document Title}
+
+% Author(s)
+% Relevant to options 1 and 2, ignored in option 3.
+\newcommand{\authorFirstName}{First}
+\newcommand{\authorLastName}{Last}
+\newcommand{\authorSNum}{SNum}
+
+% Relevant to options 2 and 3, ignored in option 1.
+\newcommand{\teamMembers}{
+	% Team member names and (student numbers)
+	First1 \textsc{Last1} (snum1)\\
+	First2 \textsc{Last2} (snum2)
 }
+
+% Relevant to option 3 only.
+\newcommand{\authorDenoter}{Authors/Team Members}
+
+
+%% COMMENT OUT UNDESIRED OPTIONS FULLY:
+
+% 1 Author, no others
+% start1:
+%\newcommand{\titlepageAuthors}{
+%	{\large\textit{Author}}\\
+%	\authorFirstName \textsc{ \authorLastName} (\authorSNum)\\[2cm]
+%}
+%% end1.
+
+
+% 1 Author with team members
+% start2:
+\newcommand{\titlepageAuthors}{
+	\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\large
+				\textit{Author}\\
+				\authorFirstName \textsc{ \authorLastName}
+				 	(\authorSNum)
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\large
+				\textit{Team Members}\\
+				\teamMembers
+			\end{flushright}
+		\end{minipage}\\[2cm]
+}
+% end2.
+
+% Set of authors/team members
+%% start3:
+%\newcommand{\titlepageAuthors}{
+%	\large \textit{\authorDenoter}\\
+%	\teamMembers \\[2cm]
+%}
+%% end3.
+		
+% Header
+\newcommand{\rightHeader}{Class - Document ID 1}
+\newcommand{\leftHeader}{\courseCode}
+
+% Section Colours (RGB)
+\newcommand{\sectionColour}{0, 51, 204}
+\newcommand{\subsectionColour}{31, 73, 125}
+\newcommand{\subsubsectionColour}{79, 129, 189}
+
+% Table Header Colour (RGB)
+\newcommand{\tableHeadColour}{219,229,241}
+
+% Table of Contents Depth (Uncomment Desired)
+
+%\setcounter{tocdepth}{-1} % only parts
+%\setcounter{tocdepth}{0} % only parts and chapters
+%\setcounter{tocdepth}{1} % part, chapters, sections
+%\setcounter{tocdepth}{2} % part, chapters, sections, subsections
+\setcounter{tocdepth}{3} % part, chapters, sections, subsections,
+% 											subsubsections
 
 % Includes the relevant setup for a report.
 % Access this file to change heading colours and other setup features
-\input{./MinutesSetup2.tex}
+\input{/Users/Shared/LaTeX-templates/Report-Template/ReportSetup2.tex}
 
 
 %% FIGURES/IMAGES
 % graphics paths, relative to current folder.
-\graphicspath{{images/}}
-
+\graphicspath{{images/}{/Users/Shared/LaTeX-templates/Report-Template/images/}}
 
 
 
@@ -37,45 +133,88 @@
 
 \begin{document}
 \setafport
+
+%sets frontmatter page number to roman numerals
+\pagenumbering{roman} 
+    
+    % Includes a report titlepage
+    \input{/Users/Shared/LaTeX-templates/Report-Template/ReportTitlepage.tex}
+    %\input{./ReportTitlepage.tex} % Use this one if editing a local copy
+ 
+    \newpage % creates a new page
+
+ % * means no numbering, and not included in table of contents
+\section*{Executive Summary}
+
+    usefulness of project, project task, external resources used (programs, approaches, etc.)
+
+    \subsection*{Project Summary}
+    
+        Design requirements include:
+        % removes space before list
+        \vspace{-0.7\topsep} 
+        \begin{itemize}
+            \item Main
+            \begin{itemize}
+                \item[o] Sub
+            \end{itemize}
+        \end{itemize}
+        
+        Technical and behavioural modelling showed:
+        \vspace{-0.7\topsep}
+        \begin{itemize}
+            \item Main
+        \end{itemize}
+        
+        Final design choice, based off scale:
+        \vspace{-0.7\topsep}
+        \begin{itemize}
+            \item Main
+        \end{itemize}
+        
+        project current stage of development, future improvements/further considerations
+        
+\newpage
+% creates table of contents based on section, subsection, 
+%   and subsubsections
+\tableofcontents 
+% creates list of figures based on figures in document
+\listoffigures 
+% creates list of tables based on tables in document
+\listoftables 
+
+\newpage
 \pagenumbering{arabic} %sets body page numbering to arabic numerals
 
-\meetingInfo % start off with location, time, and people present
+\sectionl{Section} % refered to with \secref{Section}
 
-\sectionl{Proposed Agenda}
+    \subsectionl{Subsection} % referred to with \secref[s]{Subsection}
+    
+    		\subsubsectionl{SubSubSection}
+    		% referred to with \secref[ss]{SubSubSection}
+     
 
-	\begin{enumerate}
-		% \topic[Owner(s)]{Topic Name/Descriptor}
-		\topic[First2]{Topic1}\\
-			Extra details
-		\topic[First1, First2]{Topic2}
-		\topic{Topic3} % no owner implies relevant to and owned by all
-	\end{enumerate}
-    		
-\sectionl{Meeting Minutes}
+\newpage
+\begin{thebibliography}{2}
+    \bibitem{Reference} LastName, I.N. (year). Title. [e-book] Accessed 12 October 2016, Available from http://website.com.au/details.
+    
+    \bibitem{Other} Other N. \& Other2. S.P. (year) Title. Source.
+\end{thebibliography}
 
-	\begin{enumerate}
-		% \topic{Topic Name/Descriptor}
-		\topic{Topic1}\\
-			Relevant notes/decisions
-		\topic{Topic2}\\
-			Removed from agenda.
-		\topic{Topic3}\\
-		  New client communications and plan established.
-	\end{enumerate}
-	
-\sectionl{Next Steps}
+%The appendices start here
+\newpage
+\begin{appendix}
 
-	\begin{itemize}
-	  \topic{Next Meeting}\\
-			% Date, Time, Location (as accurately as known)
-			Two weeks (26/2 or 28/2)
-		\topic{TODO}\\
-			% Actions to complete (with due date (no due date implies next meeting)
-			%   and allocation to relevant person/people)
-			\alloc{First1} prepare X resources.\\
-			\alloc{First1, First2} make a document template (14/2), run tests.
-	\end{itemize}
-
+\sectional{Appendix Name} % referred to with \appref{Appendix Name}
+    
+    \subsectional{Appendix Subsection}
+    % referred to with \appref[s]{Appendix Subsection}
+    
+        \subsubsectional{Appendix Subsubsection}
+        % referred to with \appref[ss]{Appendix Subsubsection}
+        
+        
+\end{appendix}
 
 \end{document}
 
@@ -196,6 +335,8 @@
 	 \coderef{label}
 	 % Reference sections:
 	 \secref{label}
+	 % Reference appendices:
+	 \appref{label}
     
     %% MULTI-LINE COMMENTS
 	\comment{<text>} % multiple lines of comment in the tex code
