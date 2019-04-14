@@ -58,7 +58,10 @@
 \newcommand{\setafland}{\setpagesize{\aflong}{\afshort}}
 
 % Sets page to A3 portrait
-\newcommand{\setatport}{\setpagesize{\atshort}{\atlong}} 
+\newcommand{\setatport}{\setpagesize{\atshort}{\atlong}}
+
+%------------------- LABELS ---------------------%
+\newcommand{\plabel}[2][]{\label{#1: #2}}
 
 %-------------------FIGURES ---------------------%
 \usepackage{graphicx, float, caption}
@@ -67,19 +70,19 @@
 
 % \fig{scale 1=100%}{filename}{caption}
 \newcommand{\fig}[3]{\begin{figure}[H] 
-    \centering
-    \includegraphics[scale=#1]{#2}
-    \caption{#3 \label{fig: #2}}
+  \centering
+  \includegraphics[scale=#1]{#2}
+  \caption{#3 \plabel[fig]{#2}}
 \end{figure}}
 
 % Insert figures with a frame
 \newcommand{\framefig}[3]{\begin{figure}[H] 
-    \centering
-    \frame{\includegraphics[scale=#1]{#2}}
-    \caption{#3 \label{fig: #2}}
+  \centering
+  \frame{\includegraphics[scale=#1]{#2}}
+  \caption{#3 \plabel[fig]{#2}}
 \end{figure}}
 
-% Insert sub-figures (within a figure)
+% Insert sub-figures (within a multifig)
 %\subfig{alignment}{fig-width}{img-scale/height/width}{filename}{caption}
 % alignment = t(top) / b(bottom)
 % width e.g. = 0.5\textwidth
@@ -87,11 +90,20 @@
 % filename e.g. = image / image.jpg / etc
 % caption e.g. = Descriptive subfigure caption
 \newcommand{\subfig}[5]{
-    \begin{subfigure}[#1]{#2}
-        \centering
-        \includegraphics[#3]{#4}
-        \caption{#5 \label{sfig: #4}}
-    \end{subfigure}
+  \begin{subfigure}[#1]{#2}
+    \centering
+    \includegraphics[#3]{#4}
+    \caption{#5 \plabel[sfig]{#4}}
+  \end{subfigure}
+}
+
+% Insert multiple subfigures (\multifig{\subfigs}{caption})
+\newcommand{\multifig}[2]{
+  \begin{figure}[H]
+    \centering
+    #1
+    \caption{#2 \plabel[fig]{#2}}
+  \end{figure}
 }
 
 %--------------------TABLES----------------------%
@@ -118,7 +130,7 @@
     \footnotesize % sets text size to that of footnotes, within table
     \centering % centers table on screen
     \caption{#1}
-    \label{tab: #1}
+    \plabel[tab]{#1}
     \begin{tabular}{#2} 
       #3
     \end{tabular}
@@ -157,9 +169,9 @@
 	\begin{center}
 		Listing \arabic{codeCounter}: {#2
 			\ifx&#1&%
-			  \label{code: #2} % optional arg is empty, use caption as label
+			  \plabel[code]{#2} % optional arg is empty, use caption as label
 			\else
-			  \label{code: #1} % optional arg available, use it as label
+			  \plabel[code]{#1} % optional arg available, use it as label
 			\fi
 		}
 	\end{center}
@@ -189,14 +201,14 @@
 %------------------SECTIONS--------------------%
 
 % Normal
-\newcommand{\sectionl}[1]{\section{#1} \label{sec: #1}}
-\newcommand{\subsectionl}[1]{\subsection{#1} \label{ssec: #1}}
-\newcommand{\subsubsectionl}[1]{\subsubsection{#1} \label{sssec: #1}}
+\newcommand{\sectionl}[1]{\section{#1} \plabel[sec]{#1}}
+\newcommand{\subsectionl}[1]{\subsection{#1} \plabel[ssec]{#1}}
+\newcommand{\subsubsectionl}[1]{\subsubsection{#1} \plabel[sssec]{#1}}
 
 % Appendices
-\newcommand{\sectional}[1]{\section{#1} \label{a: #1}}
-\newcommand{\subsectional}[1]{\subsection{#1} \label{as: #1}}
-\newcommand{\subsubsectional}[1]{\subsubsection{#1} \label{ass: #1}}
+\newcommand{\sectional}[1]{\section{#1} \plabel[a]{#1}}
+\newcommand{\subsectional}[1]{\subsection{#1} \plabel[as]{#1}}
+\newcommand{\subsubsectional}[1]{\subsubsection{#1} \plabel[ass]{#1}}
 
 %-----------------REFERENCING------------------%
 \newcommand{\reftab}[1]{\ref{tab: #1}}
