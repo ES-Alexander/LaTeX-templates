@@ -1,17 +1,21 @@
 # LaTeX-templates
 A set of templates for LaTeX in a university/college environment.
 _________________________________
- Version: 2.0.0-beta                 
+ Version: 2.0.1-beta                 
  Author: ES Alexander         
- Release Date: 23/01/2019
+ Release Date: 14/04/2019
 _________________________________
+
+#### This release changes to absolute file-paths for setup files. These need to be updated (in the template files) to match where you have the setup files stored.
+
+---------------------------------
 
 Available Templates:
  - Assignments
  - Reports
  - Meeting Minutes
 
-------------------------------
+---------------------------------
 
 One of the hardest parts of using LaTeX is getting started with things that work. This set of templates aims to provide you with the starting point, so you can focus on the benefits of LaTeX formatting for your assignments, reports, and meeting minutes. With regular comments and all the functionality I've found useful so far throughout uni, you can either use the templates as-is, or use them as an opportunity to learn some LaTeX, and modify them to your preferences.
 
