@@ -1,4 +1,5 @@
 % ------------- GENERAL -------------- %
+\usepackage[utf8]{inputenc} % allows for online editing
 \usepackage{amsfonts} % fonts package
 % math, symbols, and theorems packages (esint -> oiint, mathrsfs -> \mathscr{L})
 \usepackage{amsmath, amsthm, amssymb, esint, mathrsfs} 
@@ -15,7 +16,7 @@
 \lhead{\leftHeader} % left header
 \rhead{\rightHeader} % right header
 % page number bottom right (instead of default middle)
-\rfoot{\thepage} 
+\rfoot{\thepage}
 
 % ------------ PAGE SIZES ------------ %
 % Long side of A4 paper
@@ -34,18 +35,18 @@
 
 % Set a page to a new size (\setpagesize{width}{height})
 \newcommand{\setpagesize}[2]{
-		\eject 
-		% set height and width
-		\pdfpagewidth = #1 \pdfpageheight = #2
-		% adjust horizontal and vertical offset w.r.t. a4 portrait basis
-		\newgeometry{
-			top = \topMargin, 
-			bottom = \bottomMargin - (#2 - \aflong),
-			left = \leftMargin,
-			right = \rightMargin - (#1 - \afshort)
-		}
-		% refresh header and footer to suit new page size
-		\fancyheadoffset[R]{0cm}  \fancyfootoffset[R]{0cm}
+  \eject 
+	% set height and width
+	\pdfpagewidth = #1 \pdfpageheight = #2
+	% adjust horizontal and vertical offset w.r.t. a4 portrait basis
+	\newgeometry{
+		top = \topMargin, 
+		bottom = \bottomMargin - (#2 - \aflong),
+		left = \leftMargin,
+		right = \rightMargin - (#1 - \afshort)
+	}
+	% refresh header and footer to suit new page size
+	\fancyheadoffset[R]{0cm}  \fancyfootoffset[R]{0cm}
 }
 
 % Sets page to A4 portrait
@@ -61,90 +62,155 @@
 \newcommand{\setatport}{\setpagesize{\atshort}{\atlong}}
 
 %------------------- LABELS ---------------------%
+% Label with a prefix
+% \plabel[prefix]{label}
 \newcommand{\plabel}[2][]{\label{#1: #2}}
 
-%-------------------FIGURES ---------------------%
+% Label for an equation
+% \eqlabel{label}
+\newcommand{\eqlabel}[1]{\plabel[eq]{#1}}
+
+%------------------- FIGURES --------------------%
 \usepackage{graphicx, float, caption}
 % package enabling subfigures
 \usepackage{subcaption}
 
-% \fig{scale 1=100%}{filename}{caption}
-\newcommand{\fig}[3]{\begin{figure}[H] 
-  \centering
-  \includegraphics[scale=#1]{#2}
-  \caption{#3 \plabel[fig]{#2}}
-\end{figure}}
+% Insert a centered figure
+% \fig[alignment]{scale}{filename}{caption}
+%   *alignment: H by default for 'exactly in place' - can also be:
+%     h (approximately in place)
+%     b (at the bottom)
+%     t (at the top)
+%     p (on a page for figures/tables)
+%     (some others possible if necessary)
+%   scale: the scale of the inputted image (1 = real size)
+%   filename: don't include the extension (e.g. use photo instead of photo.png)
+%             unless multiple files called photo exist with different extensions
+%   caption: figure caption
+%
+%   auto-labelling labels by the filename, reference with \figref{filename} or
+%     \reffig{filename} for just the number
+\newcommand{\fig}[4][H]{
+  \begin{figure}[#1]
+	  \centering
+	  \includegraphics[scale=#2]{#3}
+	  \caption{#4 \plabel[fig]{#3}}
+  \end{figure}
+}
 
-% Insert figures with a frame
-\newcommand{\framefig}[3]{\begin{figure}[H] 
-  \centering
-  \frame{\includegraphics[scale=#1]{#2}}
-  \caption{#3 \plabel[fig]{#2}}
-\end{figure}}
+% Insert a centered figure with a frame
+% \framefig[alignment]{scale}{filename}{caption}
+\newcommand{\framefig}[4][H]{
+  \begin{figure}[#1] 
+	  \centering
+	  \frame{\includegraphics[scale=#2]{#3}}
+	  \caption{#4 \plabel[fig]{#3}}
+  \end{figure}
+}
+
+% Insert multiple subfigures
+% \multifig[alignment]{\subfigs}{caption}
+%
+%   auto-labelling labels by the caption, reference with \figref{caption} or
+%     \reffig{caption} for just the number
+\newcommand{\multifig}[3][H]{
+  \begin{figure}[#1]
+    \centering
+    #2
+    \caption{#3 \plabel[fig]{#3}}
+  \end{figure}
+}
 
 % Insert sub-figures (within a multifig)
-%\subfig{alignment}{fig-width}{img-scale/height/width}{filename}{caption}
-% alignment = t(top) / b(bottom)
-% width e.g. = 0.5\textwidth
-% scale e.g. = scale=0.5 / height=5cm / width=3in
-% filename e.g. = image / image.jpg / etc
-% caption e.g. = Descriptive subfigure caption
-\newcommand{\subfig}[5]{
-  \begin{subfigure}[#1]{#2}
+% \subfig[img-scale/height/width][alignment]{fig-width}{filename}{caption}
+%   alignment: applies to within the figure (normally want t (top))
+%
+%   auto-labelling labels by the filename, reference with \sfigref{filename} or
+%     \reffig[s]{filename} for just the number
+\newcommand{\subfig}[5][width=\textwidth]{
+  \begin{subfigure}[#2]{#3}
     \centering
-    \includegraphics[#3]{#4}
+    \includegraphics[#1]{#4}
     \caption{#5 \plabel[sfig]{#4}}
   \end{subfigure}
 }
 
-% Insert multiple subfigures (\multifig{\subfigs}{caption})
-\newcommand{\multifig}[2]{
-  \begin{figure}[H]
-    \centering
-    #1
-    \caption{#2 \plabel[fig]{#2}}
-  \end{figure}
-}
-
 %--------------------TABLES----------------------%
-% Use as \easytable{caption}{columns}{contents}
-%   caption e.g. = Table Caption (auto-labelled as 'tab: Table Caption')
-%   columns = column distribution, types, and separation 
-%     e.g. |c|c|p{0.5\linewidth}|
-%     Using p{n\linewidth} sets that column to justified, with width n times
-%     text-width of the line.
-%     Using c sets that column to be centered, with width auto-scaled.
-%     Vertical line sets that column to have a vertical border there
-%     Space separates columns without a border.
-%   contents = table contents
+\usepackage{array} % extended column definitions
+% setup
+\newcolumntype{^}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{;}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+  #1\ignorespaces
+}
+\newcolumntype{b}{>{\bfseries}} % bold column
+\newcolumntype{i}{>{\itshape}}  % italicised column
+
+% useful shortcuts
+\newcommand{\bfrow}{\rowstyle{\bfseries}}
+\newcommand{\itrow}{\rowstyle{\itshape}}
+\newcommand{\headingrow}{\hline\bfrow}
+\newcommand{\row}{\\ \hline} % end rows with this
+
+% Create a table
+% \easytable[alignment]{caption}{columns}{contents}
+%   *alignment: H by default for 'exactly in place' - can also be:
+%     h (approximately in place)
+%     b (at the bottom)
+%     t (at the top)
+%     p (on a page for figures/tables)
+%     (some others possible if necessary)
+%   caption: table caption
+%   columns: column distribution, types, and separation 
+%     To allow for full row styling, first column specifier should be preceded
+%       by ^ and following column specifiers should each be preceded by ;
+%       e.g. |^c|;c|;p{0.5\linewidth}|
+%     p{width} = justified, with width as specified 
+%       (requires units (2cm, 5em, 12pt), or relative measure (n\linewidth))
+%     c = centered, with width auto-scaled
+%     l = left aligned
+%     r = right aligned
+%     | = vertical border line (can be repeated, e.g. |^c||;l;r)
+%     spaces are ignored
+%     To style a whole column, precede its alignment specifier with:
+%       b (bold)
+%       i (italicised)
+%       >{style} (styled as specified)
+%   contents: table contents
 %     e.g. 
-%      \hline % adds a horizontal line
-%      \rowcolor{tableHeadColour} 
-%      \textbf{Heading1}  & \textbf{Heading2} & \textbf{Heading3} \\ 
-%      % \\ changes to next row of table
-%      \hline
-%      \textbf{Side Heading} & Text & Text\\
-%      \hline
-\newcommand{\easytable}[3]{
-  \begin{table}[H]
+%       \headingrow Heading 1 & Heading 2 & Heading 3 \row
+%       Side Heading & Text & Text \row
+%     To style a single cell, use 
+%       \textbf{text}      (bold)
+%       \textit{text}      (italicised)
+%       \normalfont{text}  (ignore column/row styling)
+%     To style a row, precede it with:
+%       \boldrow          (bold)
+%       \italicrow        (italicised)
+%       \rowstyle{style}  (styled as specified)
+\newcommand{\easytable}[4][H]{
+  \begin{table}[#1]
     \footnotesize % sets text size to that of footnotes, within table
     \centering % centers table on screen
-    \caption{#1}
-    \plabel[tab]{#1}
-    \begin{tabular}{#2} 
-      #3
+    \caption{#2}
+    \plabel[tab]{#2}
+    \begin{tabular}{#3} 
+      #4
     \end{tabular}
   \end{table}
 }
-
-\newcommand{\headingrow}{\hline\rowcolor{tableHeadColour}}
-\newcommand{\row}{\\ \hline}
 
 %-------------------COMMENTS---------------------%
 % Insert multi-line comments with \comment{<text>}
 \newcommand{\comment}[1]{} 
 % Insert displayed multi-line comments using \dcom{<text>}
 \newcommand{\dcom}[1]{\textcolor{red}{\textit{#1}}}
+
+%------------------GENERAL TEXT------------------%
+% removes indent at beginning of all paragraph
+\setlength\parindent{0pt} 
+% removes line spacing between list items.
+\setlist{noitemsep} 
 
 %-------------CODE FORMATTING---------------%
 % Matlab
@@ -163,9 +229,10 @@
 
 \newcounter{codeCounter}
 
+% use as \codeCaption[label]{caption}
+%   if no label is provided, the caption is used as the label
 \newcommand{\codeCaption}[2][]{
   \refstepcounter{codeCounter}
-  \vspace{-\topsep}
 	\begin{center}
 		Listing \arabic{codeCounter}: {#2
 			\ifx&#1&%
@@ -177,62 +244,51 @@
 	\end{center}
 }
 
-% use as \python{filename}{caption label}
+% use as \python{filename}{caption}
 \newcommand{\python}[2]{
-	\vspace{\topsep}
-  \lstinputlisting[language=Python, numbers=left, 
-      numberstyle=\color{lightgrey}\small, numbersep=8pt, basicstyle=\ttm,
-      otherkeywords={self}, keywordstyle=\ttb\color{deepblue},
-      emph={__init__,__call__,__eq__,__str__,__repr__}, % Custom highlighting
-      emphstyle=\ttb\color{deepred},                    % Highlighting style
-      stringstyle=\color{deepgreen}, commentstyle=\color{deepred},
-      frame=single, showstringspaces=false, breaklines=true]{#1}
-  \codeCaption[#1]{#2}
+	\codeCaption[#1]{#2}
+  \lstinputlisting[
+    language=Python, 
+    numbers=left, 
+    numberstyle=\color{lightgrey}\small, 
+    numbersep=8pt, 
+    basicstyle=\ttm,
+    basewidth={.48em}, % Inter-letter spacing
+    otherkeywords={self,cls},           % Custom keywords
+    keywordstyle=\ttb\color{deepblue},  % Keywords style
+    emph={__init__,__call__,__eq__,__str__,__repr__}, % Custom highlighting
+    emphstyle=\ttb\color{deepred},                    % Highlighting style
+    stringstyle=\color{deepgreen}, 
+    commentstyle=\color{deepred},
+    frame=single, 
+    showstringspaces=false, 
+    breaklines=true
+  ]{#1}
 }
 
-% use as \matlab{filename}{caption label}
+% use as \matlab{filename}{caption}
 \newcommand{\matlab}[2]{
-	\vspace{\topsep}
+	\codeCaption[#1]{#2}
   \lstset{style=Matlab-editor}
   \lstinputlisting{#1}
-  \codeCaption[#1]{#2}
 }
 
-%------------------SECTIONS--------------------%
-
-% Normal
-\newcommand{\sectionl}[1]{\section{#1} \plabel[sec]{#1}}
-\newcommand{\subsectionl}[1]{\subsection{#1} \plabel[ssec]{#1}}
-\newcommand{\subsubsectionl}[1]{\subsubsection{#1} \plabel[sssec]{#1}}
-
-% Appendices
-\newcommand{\sectional}[1]{\section{#1} \plabel[a]{#1}}
-\newcommand{\subsectional}[1]{\subsection{#1} \plabel[as]{#1}}
-\newcommand{\subsubsectional}[1]{\subsubsection{#1} \plabel[ass]{#1}}
-
 %-----------------REFERENCING------------------%
-\newcommand{\reftab}[1]{\ref{tab: #1}}
-\newcommand{\reffig}[2][]{\ref{#1fig: #2}}
-\newcommand{\refsec}[2][]{\ref{#1sec: #2}}
-\newcommand{\refcode}[1]{\ref{code: #1}}
-\newcommand{\refapp}[2][]{\ref{a#1: #2}}
+% Just the number
+\newcommand{\reftab}[1]{\ref{tab: #1}}     % tables
+\newcommand{\reffig}[2][]{\ref{#1fig: #2}} % figures/subfigures
+\newcommand{\refcode}[1]{\ref{code: #1}}   % code/listings
+\renewcommand{\eqref}[1]{(\ref{eq: #1})}   % equations
 
-% Reference figures:
-\newcommand{\figref}[1]{Figure \reffig{#1}}
-% Reference subfigures:
-\newcommand{\sfigref}[1]{Figure \reffig[s]{#1})}
-% Reference tables:
-\newcommand{\tabref}[1]{Table \reftab{#1}}
-% Reference code:
-\newcommand{\coderef}[1]{Listing \refcode{#1}}
-% Reference sections:
-\newcommand{\secref}[2][]{Section \refsec[#1]{#2}}
-% Reference appendices:
-\newcommand{\appref}[2][]{Appendix \refapp[#1]{#2}}
+% Number + relevant intro
+\newcommand{\figref}[1]{Figure \reffig{#1}}       % figures
+\newcommand{\sfigref}[1]{Figure \reffig[s]{#1})}  % subfigures
+\newcommand{\tabref}[1]{Table \reftab{#1}}        % tables
+\newcommand{\coderef}[1]{Listing \refcode{#1}}    % code/listings
 
 %--------------MATHS NOTATIONS---------------%
 % Insert units with \unit[power]{<unit>} (e.g. \unit[3]{m} -> m^3)
-\newcommand{\unit}[2][]{\ \text{#2}^{#1}}
+\newcommand{\unit}[2][]{\,\text{#2}^{#1}}
 \newcommand{\nsunit}[2][]{\text{#2}^{#1}}
 
 % Insert *10^n with \E{n} (e.g. \E{-5})
@@ -240,7 +296,7 @@
 \newcommand{\tE}[1]{$\E{#1}$}
 
 % Command for math formatted differentials (use \D var)
-\newcommand{\D}{\ \mathrm{d}} 
+\newcommand{\D}{\,\mathrm{d}} 
 
 % Command for degrees symbol
 \renewcommand{\deg}[1]{{#1}^\circ}
@@ -260,7 +316,7 @@
 \newcommand{\diint}[7]{\dint{#1}{#2}{\dint{#3}{#4}{#5}{#6}}{#7}}
 
 % Command for partial derivatives
-\newcommand{\del}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\del}[3][]{\dfrac{\partial^{#1} #2}{\partial #3^{#1}}}
 
 % Command for full derivatives (nth order)
 \newcommand{\der}[3][]{\dfrac{\D ^{#1} #2}{\D {#3}^{#1}}}

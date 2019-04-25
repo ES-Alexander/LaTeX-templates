@@ -1,8 +1,6 @@
-% allows for online editing and stuff
-\usepackage[utf8]{inputenc} 
-
 \input{/Users/Shared/LaTeX-templates/CommonSetup2.tex}
 
+%------------------ GENERAL ---------------------%
 % sets the margin and geometry of the document
 \usepackage[top=\topMargin, bottom=\bottomMargin, 
 	left=\leftMargin, right=\rightMargin]{geometry} 
@@ -11,17 +9,11 @@
 % package changing appendix from "A Name" to "Appendix A Name"
 \usepackage[titletoc,title]{appendix}
 
-% tbh not sure why this is here or what it does...
-% Haven't used it in any other LaTeX documents before, but oh well :-P
-%\usepackage{array} 
-
 % package to nicely format URLs and hyperlinks
 \usepackage{hyperref} % \url{...}
 \hypersetup{colorlinks, urlcolor=blue, linkcolor=black, citecolor=black}
 
-% ------------- COLOURS --------------%
-% allows for coloured tables
-\usepackage{color, colortbl} 
+%------------------ SECTIONS --------------------%
 % allows for coloured headings
 \usepackage{sectsty} 
 
@@ -33,21 +25,55 @@
 \definecolor{tableHeadColour}{RGB}{\tableHeadColour} 
 
 % sets section heading colour
-\sectionfont{\color{sectionColour}} 
+\sectionfont{\color{sectionColour}}
 % sets subsection heading colour
-\subsectionfont{\color{subSectionColour}} 
+\subsectionfont{\color{subSectionColour}}
 % sets subsubsection heading colour
-\subsubsectionfont{\color{subSubSectionColour}} 
+\subsubsectionfont{\color{subSubSectionColour}}
 
-% ------ ADDITIONAL STYLING ------%
+% Normal
+\newcommand{\sectionl}[1]{\section{#1} \plabel[sec]{#1}}
+\newcommand{\subsectionl}[1]{\subsection{#1} \plabel[ssec]{#1}}
+\newcommand{\subsubsectionl}[1]{\subsubsection{#1} \plabel[sssec]{#1}}
+
+% Appendices
+\newcommand{\sectional}[1]{\section{#1} \plabel[a]{#1}}
+\newcommand{\subsectional}[1]{\subsection{#1} \plabel[as]{#1}}
+\newcommand{\subsubsectional}[1]{\subsubsection{#1} \plabel[ass]{#1}}
+
+% Referencing
+\newcommand{\refsec}[2][]{\ref{#1sec: #2}}
+\newcommand{\refapp}[2][]{\ref{a#1: #2}}
+\newcommand{\secref}[2][]{Section \refsec[#1]{#2}}
+\newcommand{\appref}[2][]{Appendix \refapp[#1]{#2}}
+
+% ------------------ TABLES --------------------%
+% allows for coloured tables
+\usepackage{color, colortbl} 
+
+% allows for merged cells
+% \multicolumn{num_cols}{alignment}{text} span multiple columns with one cell
+% \multirow{num_rows}{*/width}{text} span multiple rows with one cell
+\usepackage{multicol, multirow} 
+% allows for multi-page tables, as well as tables as wide as you want
+\usepackage{longtable}
+
+% update headingrow command to include coloured cells
+\renewcommand{\headingrow}{\hline\rowcolor{tableHeadColour}\bfrow}
+
+% same as in CommonSetup2.tex, but for longtables
+\newcommand{\easylongtable}[4][H]{
+  \begin{longtable}[#1]
+    \footnotesize % sets text size to that of footnotes, within table
+    \centering % centers table on screen
+    \caption{#2}
+    \plabel[tab]{#2}
+    \begin{tabular}{#3} 
+      #4
+    \end{tabular}
+  \end{longtable}
+}
+
+% ----------- ADDITIONAL STYLING ----------------%
 % minipage styling (not sure if used, but might be)
 \usepackage{genmpage}
-% allows for list and table specification, including merged cells
-\usepackage{enumitem, multicol, multirow} 
-% allows for multi-page tables, as well as tables as wide as you want
-\usepackage{longtable} 
-
-% removes indent at beginning of all paragraph
-\setlength\parindent{0pt} 
-% removes line spacing between list items.
-\setlist{noitemsep} 

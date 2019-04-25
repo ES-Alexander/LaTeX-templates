@@ -21,20 +21,14 @@
 %\deflength{\leftmargin}{2.5cm}
 %\deflength{\rightmargin}{2.5cm}
 
-% Allows for margin specification (\begin{adjustwidth}{left}{right})
-%\usepackage{changepage} 
-
 \input{/Users/Shared/LaTeX-templates/CommonSetup2.tex}
 
 %-------------------QUESTIONS---------------------%
 % Command for entering questions
-\makeatletter
-\newcommand{\que}[2][\@nil]{
-  \def\tmp{#1} % define a temporary variable for checking purposes
-  
+\newcommand{\que}[2][]{  
   \color{black!60} % set the question text to grey
   % conditional code depending on existence of optional argument
-  \ifx\tmp\@nnil
+  \ifx&#1&%
     \item
   \else
     \item[#1]
@@ -43,6 +37,5 @@
   \textbf{#2} % bold (and grey) question text
   \color{black} % return the following text to black
 }
-\makeatother
 					
 					
