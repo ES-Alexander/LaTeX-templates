@@ -1,12 +1,14 @@
 # LaTeX-templates
 A set of templates for LaTeX in a university/college environment.
 _________________________________
- Version: 2.1.1-beta                 
+ Version: 2.2.0                 
  Author: ES Alexander         
- Release Date: 14/04/2019
+ Release Date: 26/04/2019
 _________________________________
 
 #### This release changes to absolute file-paths for setup files. These need to be updated (in the template files) to match where you have the setup files stored.
+
+#### Significant effort has been put into documentation in this release. Please refer to the 'TheDocs.pdf' file for a basic LaTeX guide and an extensive outline of the features provided in these templates.
 
 ---------------------------------
 
