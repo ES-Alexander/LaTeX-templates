@@ -1,19 +1,38 @@
+% Macro for declaring and setting lengths (\defineLength{name}{value})
+\newcommand{\defineLength}[2]{\newlength{#1} \setlength{#1}{#2}}
+
+% Defines a new command for horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+
 % Margin (comment out the undesired option)
 
 % Set all using totalmargin
-\deflength{\totalMargin}{2.5cm}
+\defineLength{\totalMargin}{2.5cm}
 
-\deflength{\topMargin}{\totalMargin}
-\deflength{\bottomMargin}{\totalMargin}
-\deflength{\leftMargin}{\totalMargin}
-\deflength{\rightMargin}{\totalMargin}
+\defineLength{\topMargin}{\totalMargin}
+\defineLength{\bottomMargin}{\totalMargin}
+\defineLength{\leftMargin}{\totalMargin}
+\defineLength{\rightMargin}{\totalMargin}
 
 % Set each individually
-%\deflength{\topmargin}{2.5cm}
-%\deflength{\bottommargin}{2.5cm}
-%\deflength{\leftmargin}{2.5cm}
-%\deflength{\rightmargin}{2.5cm}
+%\defineLength{\topmargin}{2.5cm}
+%\defineLength{\bottommargin}{2.5cm}
+%\defineLength{\leftmargin}{2.5cm}
+%\defineLength{\rightmargin}{2.5cm}
+		
+% Header
+\newcommand{\rightHeader}{Meeting \meetingID}
+\newcommand{\leftHeader}{\meetingDescriptor}
 
+% Section Colours (RGB)
+\newcommand{\sectionColour}{0, 51, 204}
+\newcommand{\subsectionColour}{31, 73, 125}
+\newcommand{\subsubsectionColour}{79, 129, 189}
+
+% Table Header Colour (RGB)
+\newcommand{\tableHeadColour}{219,229,241}
+
+\input{/Users/Shared/LaTeX-templates/Report-Template/ReportSetup2.tex}
 
 % Combined Meeting Information
 \newcommand{\meetingInfo}{
@@ -31,20 +50,6 @@
 	\end{minipage}\\[0.5cm]
 	\HRule
 }
-		
-% Header
-\newcommand{\rightHeader}{Meeting \meetingID}
-\newcommand{\leftHeader}{\meetingDescriptor}
-
-% Section Colours (RGB)
-\newcommand{\sectionColour}{0, 51, 204}
-\newcommand{\subsectionColour}{31, 73, 125}
-\newcommand{\subsubsectionColour}{79, 129, 189}
-
-% Table Header Colour (RGB)
-\newcommand{\tableHeadColour}{219,229,241}
-
-\input{/Users/Shared/LaTeX-templates/Report-Template/ReportSetup.tex}
 
 % an 'owner' command for specifying who owns a given topic
 \newcommand{\owner}[1]{\textit{(#1)}}
