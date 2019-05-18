@@ -213,6 +213,7 @@
 \setlist{noitemsep} 
 
 %-------------CODE FORMATTING---------------%
+%-------------CODE FORMATTING---------------%
 % Matlab
 \usepackage[numbered,framed]{matlab-prettifier} % MATLAB nice code
 
@@ -225,7 +226,9 @@
 \definecolor{deepred}{rgb}{0.6,0,0}
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 \definecolor{lightgrey}{rgb}{0.7,0.7,0.7}
-\definecolor{black}{rgb}{0,0,0}
+\definecolor{orange}{rgb}{0.9,0.5,0.2}
+\definecolor{blue}{rgb}{0,0,0.7}
+\definecolor{lightblue}{rgb}{0.24,0.65,1}
 
 \newcounter{codeCounter}
 
@@ -250,7 +253,7 @@
   numberstyle=\color{lightgrey}\small, 
   numbersep=8pt, 
   basicstyle=\ttm,
-  basewidth={.0125\textwidth}, % Inter-letter spacing, 80 characters per line
+  basewidth={.0125\textwidth}, % Inter-letter spacing
   otherkeywords={self,cls},           % Custom keywords
   keywordstyle=\ttb\color{deepblue},  % Keywords style
   emph={__init__,__call__,__eq__,__str__,__repr__}, % Custom highlighting
@@ -262,7 +265,25 @@
   breaklines=true
 }
 
-\lstset{basicstyle=\ttfamily, basewidth={0.48em}}
+\lstdefinestyle{C-MPLAB-X}{
+  language=C,
+  numbers=left,
+  numberstyle=\color{lightgrey}\small, 
+  numbersep=8pt, 
+  basicstyle=\ttm,
+  basewidth={.0125\textwidth}, % Inter-letter spacing
+  otherkeywords={uint8_t,uint16_t,int16_t,bool,\#define}, % Custom keywords
+  keywordstyle=\ttb\color{blue},  % Keywords style
+  emph={__delay_ms, defined, true, false}, % Custom highlighting
+  emphstyle=\ttb\color{lightblue},  % Highlighting style
+  stringstyle=\color{orange}, 
+  commentstyle=\color{deepgreen},
+  frame=single, 
+  showstringspaces=false, 
+  breaklines=true
+}
+
+\lstset{basicstyle=\ttfamily, basewidth={0.0125\textwidth}}
 
 % \intextCode[options]{caption}{code}
 \newcommand{\intextCode}[3][]{
@@ -286,6 +307,11 @@
 % use as \matlab[options]{filename}{caption}
 \newcommand{\matlab}[3][]{
   \inputCode[style=Matlab-editor, #1]{#2}{#3}
+}
+
+% use as \C[options]{filename}{caption}
+\newcommand{\C}[3][]{
+  \inputCode[style=C-MPLAB-X, #1]{#2}{#3}
 }
 
 %-----------------REFERENCING------------------%
