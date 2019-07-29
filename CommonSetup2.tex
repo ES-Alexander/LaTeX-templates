@@ -363,12 +363,15 @@
 \newcommand{\der}[3][]{\dfrac{\D ^{#1} #2}{\D {#3}^{#1}}}
 
 % Command for common redefinitions (brackets included)
-\renewcommand{\cos}[2][]{\text{cos}^{#1}\!\lr{#2}} % optional power
-\renewcommand{\sin}[2][]{\text{sin}^{#1}\!\lr{#2}} % optional power
-\renewcommand{\tan}[2][]{\text{tan}^{#1}\!\lr{#2}} % optional power
-\renewcommand{\ln}[1]{\text{ln}\!\lr{#1}}
-\renewcommand{\log}[2][]{\text{log}_{#1}\!\lr{#2}} % optional base
-\renewcommand{\exp}[1]{\text{exp}\!\lr{#1}}
+\renewcommand{\cos}[2][]{\mathrm{cos}^{#1}\!\lr{#2}} % optional power
+\renewcommand{\sin}[2][]{\mathrm{sin}^{#1}\!\lr{#2}} % optional power
+\renewcommand{\tan}[2][]{\mathrm{tan}^{#1}\!\lr{#2}} % optional power
+\renewcommand{\arccos}[1]{\mathrm{arccos}\!\lr{#1}}
+\renewcommand{\arcsin}[1]{\mathrm{arcsin}\!\lr{#1}}
+\renewcommand{\arctan}[1]{\mathrm{arctan}\!\lr{#1}}
+\renewcommand{\ln}[1]{\mathrm{ln}\!\lr{#1}}
+\renewcommand{\log}[2][]{\mathrm{log}_{#1}\!\lr{#2}} % optional base
+\renewcommand{\exp}[1]{\mathrm{exp}\!\lr{#1}}
 \newcommand{\limit}[2]{\lim\limits_{{#1}\rightarrow{#2}}}
 
 % Command for quadratic formula
