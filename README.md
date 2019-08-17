@@ -1,7 +1,7 @@
 # LaTeX-templates
 A set of templates for LaTeX in a university/college environment.
 _________________________________
- Version: 2.2.2                 
+ Version: 2.2.3                 
  Author: ES Alexander         
  Release Date: 12/05/2019
 _________________________________
