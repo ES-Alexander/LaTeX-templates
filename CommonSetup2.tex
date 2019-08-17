@@ -253,7 +253,7 @@
   numberstyle=\color{lightgrey}\small, 
   numbersep=8pt, 
   basicstyle=\ttm,
-  basewidth={.0125\textwidth}, % Inter-letter spacing
+  basewidth={.012\textwidth}, % Inter-letter spacing
   otherkeywords={self,cls},           % Custom keywords
   keywordstyle=\ttb\color{deepblue},  % Keywords style
   emph={__init__,__call__,__eq__,__str__,__repr__}, % Custom highlighting
@@ -276,6 +276,24 @@
   keywordstyle=\ttb\color{blue},  % Keywords style
   emph={__delay_ms, defined, true, false}, % Custom highlighting
   emphstyle=\ttb\color{lightblue},  % Highlighting style
+  stringstyle=\color{orange}, 
+  commentstyle=\color{deepgreen},
+  frame=single, 
+  showstringspaces=false, 
+  breaklines=true
+}
+
+\lstdefinestyle{pseudocode}{
+  language=Java,
+  numbers=left,
+  numberstyle=\color{lightgrey}\small, 
+  numbersep=8pt, 
+  basicstyle=\ttm,
+  basewidth={.0125\textwidth}, % Inter-letter spacing
+  keywordstyle=\ttb\color{blue},  % Keywords style
+  otherkeywords={Algorithm, Input, Output, then, <, >, -, =, +, *, true, false},
+  emph={O, ops}, % Custom highlighting
+  emphstyle=\ttb\color{red},  % Highlighting style
   stringstyle=\color{orange}, 
   commentstyle=\color{deepgreen},
   frame=single, 
