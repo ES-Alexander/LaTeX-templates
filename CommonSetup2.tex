@@ -98,6 +98,16 @@
   \end{figure}
 }
 
+% Width-sized figure \figw[alignment]{width}{filename}{caption}
+%  e.g. \figw{0.9\textwidth}{my_img}{I am scaled to 9/10 of the textwidth}
+\newcommand{\figw}[4][H]{
+  \begin{figure}[#1]
+	  \centering
+	  \includegraphics[width=#2]{#3}
+	  \caption{#4 \plabel[fig]{#3}}
+  \end{figure}
+}
+
 % Insert a centered figure with a frame
 % \framefig[alignment]{scale}{filename}{caption}
 \newcommand{\framefig}[4][H]{
