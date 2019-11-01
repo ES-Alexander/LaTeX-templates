@@ -1,0 +1,105 @@
+% Macro for declaring and setting lengths (\deflength{name}{value})
+\newcommand{\defineLength}[2]{\newlength{#1} \setlength{#1}{#2}}
+
+% Defines a new command for horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Margin (comment out the undesired option)
+
+% Set all using totalmargin %
+\defineLength{\totalMargin}{2.5cm}
+
+\defineLength{\topMargin}{\totalMargin}
+\defineLength{\bottomMargin}{\totalMargin}
+\defineLength{\leftMargin}{\totalMargin}
+\defineLength{\rightMargin}{\totalMargin}
+
+% Set each individually %
+%\defineLength{\topmargin}{2.5cm}
+%\defineLength{\bottommargin}{2.5cm}
+%\defineLength{\leftmargin}{2.5cm}
+%\defineLength{\rightmargin}{2.5cm}
+
+
+% Author with supervisor(s)
+\newcommand{\titlepageAuthors}{
+	\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\large
+				\textit{Author}\\
+				\authorFirst\ \textsc{\authorLast}\ (\authorSNum)
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\large
+				\textit{\superDenoter}\\
+				\superHon\ \superFirst \superMid \textsc{\superLast}
+			\end{flushright}
+		\end{minipage}\\[2cm]
+}
+
+% play nice with CommonSetup (header/footer set properly below)
+\newcommand{\rightHeader}{}
+\newcommand{\leftHeader}{}
+
+% optional short department for titlepage
+\newcommand{\departShortT}{
+  \if\departShort\empty
+    % EMPTY
+  \else
+    (\departShort)
+  \fi
+}
+% optional short department for header
+\newcommand{\departShortH}{
+  \if\departShort\empty
+    % EMPTY
+  \else
+    \ - \departShort
+  \fi
+}
+
+% Section Colours (RGB)
+\newcommand{\chapterColour}{0, 51, 204}
+\newcommand{\sectionColour}{0, 51, 204}
+\newcommand{\subsectionColour}{31, 73, 125}
+\newcommand{\subsubsectionColour}{79, 129, 189}
+
+% Table Header Colour (RGB)
+\newcommand{\tableHeadColour}{219,229,241}
+
+\input{/Users/Shared/LaTeX-templates/Report-Template/ReportSetup2.tex}
+
+% Header (use \nouppercase{} around \leftmark and/or \rightmark to remove
+%         auto-capitalisation of the words)
+\fancyhf{} % L=left, E=even, R=right, O=odd, C=center
+\fancyhead[LE,RO]{\rightmark}  % section in top corner
+\fancyhead[RE,LO]{\instiShort\departShortH}   % set to other top corner
+\fancyfoot[CE,CO]{\leftmark}   % chapter on bottom center
+\fancyfoot[LE,RO]{\thepage}    % page in bottom corner
+
+\renewcommand{\headrulewidth}{0.7pt} % line at the top
+\renewcommand{\footrulewidth}{0.5pt} % line at the bottom
+
+
+%------------------ CHAPTERS --------------------%
+\definecolor{chapterColour}{RGB}{\chapterColour}
+
+% Styling
+\chapterfont{\color{chapterColour}}
+
+% Referencing
+\newcommand{\chapterl}[1]{\chapter{#1} \plabel[chap]{#1}}
+\newcommand{\refchap}[1]{\ref{chap: #1}}
+\newcommand{\chapref}[1]{Chapter \refchap{#1}}
+
+% Number subsections but not subsubsections:
+\setcounter{secnumdepth}{2}
+
+% Table of Contents Depth (Uncomment Desired)
+%\setcounter{tocdepth}{0} % only parts
+%\setcounter{tocdepth}{1} % part, chapters
+\setcounter{tocdepth}{2} % part, chapters, sections
+%\setcounter{tocdepth}{3} % part, chapters, sections, subsections

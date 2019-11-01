@@ -1,0 +1,94 @@
+\documentclass[12pt, openany, a4paper]{book}
+
+% ---------- DOCUMENT SETUP -----------%
+
+% Document Title
+\newcommand{\documentTitle}{Bouncing Castles Over The Moon}
+%\newcommand{\documentSubtitle}{\ }
+
+% Workplace
+\newcommand{\institution}{The University of Fun}
+\newcommand{\instiShort}{UoF}
+\newcommand{\department}{School of Great Things and Fun}
+\newcommand{\departShort}{GTF}
+\newcommand{\location}{Suburb, State, Postcode}
+\newcommand{\headFirst}{Impor}
+\newcommand{\headLast}{Tant}
+\newcommand{\headHonShort}{Prof.}
+\newcommand{\headHonLong}{Professor}
+
+% Author
+\newcommand{\authorFirst}{Ami}
+\newcommand{\authorLast}{Cable}
+\newcommand{\authorSNum}{12345678}
+\newcommand{\authorContact}{a.cable@uof.net.au}
+\newcommand{\degree}{Bachelor of Fun (Honours)}
+\newcommand{\major}{Jumping Castles}
+
+% Supervisor(s)
+\newcommand{\superDenoter}{Supervisor}
+\newcommand{\superHon}{Dr}
+\newcommand{\superFirst}{Great}
+\newcommand{\superMid}{ L. Y. }
+\newcommand{\superLast}{Underrated}
+
+% Includes the relevant setup for a report.
+% Access this file to change heading colours and other setup features
+\input{/Users/Shared/LaTeX-templates/Thesis-Template/ThesisSetup.tex}
+
+%% FIGURES/IMAGES
+% graphics paths, relative to current folder.
+\graphicspath{{images/}{/Users/Shared/LaTeX-templates/Report-Template/images/}}
+
+
+
+
+
+
+%% DOCUMENT BEGINS HERE
+
+\begin{document}
+\setafport
+
+%sets frontmatter page number to roman numerals
+\pagenumbering{roman} 
+    
+% Includes a report titlepage
+\input{/Users/Shared/LaTeX-templates/Thesis-Template/ThesisTitlepage.tex} 
+\newpage % creates a new page
+
+% * means no numbering, and not included in table of contents
+\input{/Users/Shared/LaTeX-templates/Thesis-Template/transmittal.tex} 
+\input{./chapters/acknowledgements.tex}
+\input{./chapters/abstract.tex}
+        
+\newpage
+% creates table of contents based on section, subsection, 
+%   and subsubsections
+\tableofcontents 
+% creates list of figures based on figures in document
+\listoffigures 
+% creates list of tables based on tables in document
+\listoftables 
+
+\newpage
+\pagenumbering{arabic} %sets body page numbering to arabic numerals
+
+\input{./chapters/introduction.tex}
+\input{./chapters/literature_review.tex}
+
+% body sections
+
+\input{./chapters/results_analysis.tex}
+\input{./chapters/conclusion.tex}
+
+\input{./chapters/references.tex}
+
+\begin{appendix}
+
+\chapterl{Appendix}
+
+% appendices
+
+\end{appendix}
+\end{document}
