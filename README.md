@@ -16,7 +16,7 @@ Available Templates:
  - Assignments
  - Reports
  - Meeting Minutes
- - Honours Thesis
+ - Honours Thesis (new, beta)
 
 ---------------------------------
 
