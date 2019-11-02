@@ -92,8 +92,11 @@
 
 % Referencing
 \newcommand{\chapterl}[1]{\chapter{#1} \plabel[chap]{#1}}
+\newcommand{\chapteral}[1]{\chapter{#1} \plabel[chapp]{#1}}
 \newcommand{\refchap}[1]{\ref{chap: #1}}
+\newcommand{\refchapp}[1]{\ref{chapp: #1}}
 \newcommand{\chapref}[1]{Chapter \refchap{#1}}
+\newcommand{\chappref}[1]{Appendix \refchapp{#1}}
 
 % Number subsections but not subsubsections:
 \setcounter{secnumdepth}{2}
