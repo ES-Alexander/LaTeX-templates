@@ -20,6 +20,14 @@
 %\defineLength{\leftmargin}{2.5cm}
 %\defineLength{\rightmargin}{2.5cm}
 
+% optional student number
+\newcommand{\SNum}{
+  \if\authorSNum\empty
+    % EMPTY
+  \else
+    (\authorSNum)
+  \fi
+}
 
 % Author with supervisor(s)
 \newcommand{\titlepageAuthors}{
@@ -27,7 +35,7 @@
 			\begin{flushleft}
 				\large
 				\textit{Author}\\
-				\authorFirst\ \textsc{\authorLast}\ (\authorSNum)
+				\authorFirst\ \textsc{\authorLast}\ \SNum
 			\end{flushleft}
 		\end{minipage}
 		~
