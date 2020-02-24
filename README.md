@@ -1,9 +1,9 @@
 # LaTeX-templates
 A set of templates for LaTeX in a university/college environment.
 _________________________________
- Version: 2.3.0                  
+ Version: 2.3.1                  
  Author: ES Alexander            
- Release Date: 02/Nov/2019       
+ Release Date: 25/Feb/2020       
 _________________________________
 
 #### This release changes to absolute file-paths for setup files. These need to be updated (in the template files) to match where you have the setup files stored.
@@ -16,7 +16,7 @@ Available Templates:
  - Assignments
  - Reports
  - Meeting Minutes
- - Honours Thesis (new, beta)
+ - Honours Thesis
 
 ---------------------------------
 
