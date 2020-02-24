@@ -8,5 +8,6 @@
 *.pdf
 *.gz
 *.toc
+*.bak
 
 __donotinclude__*
