@@ -1,0 +1,104 @@
+\documentclass[11pt, a4paper]{article}
+
+% Document Title
+\newcommand{\documentTitle}{Document Title}
+
+\newcommand{\mainPhoto}{food.jpg}
+
+% Author(s)
+\newcommand{\teamMembers}{
+	% Team member names and (student numbers)
+	Me \textsc{and}\\
+	You \textsc{Too}
+}
+
+% Relevant to option 3 only.
+\newcommand{\authorDenoter}{Authors}
+		
+% Header
+\newcommand{\rightHeader}{Boop}
+\newcommand{\leftHeader}{Beep}
+
+\input{/Users/Shared/LaTeX-templates/Recipes-Template/RecipesSetup.tex}
+
+%% FIGURES/IMAGES
+% graphics paths, relative to current folder.
+\graphicspath{{images/}{/Users/Shared/LaTeX-templates/Recipes-Template/images/}}
+
+%% DOCUMENT BEGINS HERE
+
+\begin{document}
+\setafport
+
+%sets frontmatter page number to roman numerals
+\pagenumbering{roman} 
+    
+% Includes a report titlepage
+\input{/Users/Shared/LaTeX-templates/Recipes-Template/RecipesTitlepage.tex}
+        
+\newpage
+% creates table of contents based on section, subsection, 
+%   and subsubsections
+\tableofcontents 
+% creates list of figures based on figures in document
+\listoffigures 
+% creates list of tables based on tables in document
+%\listoftables 
+
+\newpage
+\pagenumbering{arabic} %sets body page numbering to arabic numerals
+
+\sectionl{Baking} % refered to with \secref{Section}
+
+  \subsectionl{Dough} % referred to with \secref[s]{Subsection}
+    
+    \recipe{Pizza}{
+      \ing[tastes better with plain]{500}{g}{wholemeal flour}
+      \ing{14}{g}{yeast}
+    	\ing{10}{g}{salt}
+    	\ing{300}{g}{water}
+    	\ing{50}{g}{olive oil}
+    	\ing[for extra crunch]{}{}{polenta for rolling}
+    }{
+      \step[sprinkle with fingers]{Mix the dry ingredients in a bowl}
+      \step{Add the water and oil}
+      \step{Mix together until individual ingredients aren't loose}
+      \step{Knead for 5-10 mins by pinching the sides of the dough, pulling
+            it up, and flipping it over itself and onto the bench}
+      \step[ideally until doubled in size]{Let rise for $>$30 mins or
+            overnight in the fridge}
+      \step{Weigh the dough into thirds, and roll out on polenta until the
+                desired thickness}
+      \step{Fold over the edges and press them down into the dough to form 
+            a crust}
+      \step[$250^\text{o}$C fan-forced $\rightarrow$ about 7-10 mins for a
+            single pizza, more pizzas at once slows it down a bit]{
+            Add desired toppings (e.g. passata, cheese, fresh basil) and 
+            bake in hot oven (hotter $\rightarrow$ faster) until crust
+            begins to brown}
+      \step[Dough will last up to about a week in the fridge before it needs
+            to be used or refreshed (add more flour and water)]{}
+    }
+
+\newpage
+\begin{thebibliography}{2}
+    \bibitem{Reference} LastName, I.N. (year). Title. [e-book] Accessed 12 October 2016, Available from http://website.com.au/details.
+    
+    \bibitem{Other} Other N. \& Other2. S.P. (year) Title. Source.
+\end{thebibliography}
+
+%The appendices start here
+\newpage
+\begin{appendix}
+
+\sectional{Appendix Name} % referred to with \appref{Appendix Name}
+    
+    \subsectional{Appendix Subsection}
+    % referred to with \appref[s]{Appendix Subsection}
+    
+        \subsubsectional{Appendix Subsubsection}
+        % referred to with \appref[ss]{Appendix Subsubsection}
+        
+        
+\end{appendix}
+\end{document}

@@ -1,0 +1,101 @@
+% Macro for declaring and setting lengths (\deflength{name}{value})
+\newcommand{\defineLength}[2]{\newlength{#1} \setlength{#1}{#2}}
+
+% Defines a new command for horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% ---------- DOCUMENT SETUP -----------%
+
+% Margin (comment out the undesired option)
+
+% Set all using totalmargin %
+\defineLength{\totalMargin}{2.5cm}
+
+\defineLength{\topMargin}{\totalMargin}
+\defineLength{\bottomMargin}{\totalMargin}
+\defineLength{\leftMargin}{\totalMargin}
+\defineLength{\rightMargin}{\totalMargin}
+
+% Set each individually %
+%\defineLength{\topmargin}{2.5cm}
+%\defineLength{\bottommargin}{2.5cm}
+%\defineLength{\leftmargin}{2.5cm}
+%\defineLength{\rightmargin}{2.5cm}
+
+% Set of authors/team members
+\newcommand{\titlepageAuthors}{
+	\large \textit{\authorDenoter}\\
+	\teamMembers \\[2cm]
+}
+
+% Section Colours (RGB)
+\newcommand{\sectionColour}{0, 51, 204}
+\newcommand{\subsectionColour}{31, 73, 125}
+\newcommand{\subsubsectionColour}{79, 129, 189}
+
+% Table Header Colour (RGB)
+\newcommand{\tableHeadColour}{219,229,241}
+
+% Table of Contents Depth (Uncomment Desired)
+
+%\setcounter{tocdepth}{-1} % only parts
+%\setcounter{tocdepth}{0} % only parts and chapters
+%\setcounter{tocdepth}{1} % part, chapters, sections
+%\setcounter{tocdepth}{2} % part, chapters, sections, subsections
+\setcounter{tocdepth}{3} % part, chapters, sections, subsections,
+% 											subsubsections
+
+% Includes the relevant setup for a report.
+% Access this file to change heading colours and other setup features
+\input{/Users/Shared/LaTeX-templates/Report-Template/ReportSetup2.tex}
+
+% use as \ingredients{\ing{...} \ing{...}}
+\newcommand{\ingredients}[1]{
+  \textbf{Ingredients}
+  \begin{itemize}[label=-] 
+    #1 
+  \end{itemize}
+}
+
+% use as \ing[notes]{amount}{units}{ingredient}
+\newcommand{\ing}[4][]{\item #2#3 #4
+  \ifx&#1&%
+  \else
+    (#1)
+  \fi
+}
+  
+% use as \steps{\step{...} \step{...}}
+\newcommand{\steps}[1]{
+  \textbf{Steps}
+  \begin{enumerate} 
+    #1 
+  \end{enumerate}
+}
+
+% use as \ing[note]{instruction}, or as \ing[note step]{}
+\newcommand{\step}[2][]{
+  \ifx&#2&%
+    \item[*] #1
+  \else
+	  \item #2
+	  \ifx&#1&%
+	  \else
+	    (#1)
+	  \fi
+  \fi
+}
+
+% TODO change #1 to cite, add recipe sources to bibliography
+% use as \recipe[source]{Name}{\ing{...} \ing{...}}{\step{...} \step{...}}
+\newcommand{\recipe}[4][]{
+  \subsubsectionl{#2}
+  \ifx&#1&%
+    Our recipe
+  \else
+    #1
+  \fi
+  \newline
+  \ingredients{#3}
+  \steps{#4}
+}
