@@ -17,6 +17,7 @@ Available Templates:
  - Reports
  - Meeting Minutes
  - Honours Thesis
+ - currently working on a 'recipes' template for storing recipes in a consistent format
 
 ---------------------------------
 
